@@ -1,0 +1,51 @@
+.earn_banner_container {
+    padding: 100px 0;
+    background-color: #EAF0F5;
+}
+
+.earn_banner_card {
+    height: 385px;
+    background: linear-gradient(30deg, rgba(0, 27, 59, 0.8)), url('../../../public/earn-bannerbg.jpg') no-repeat top center;
+    background-size: cover;
+    border-radius: 23px;
+    padding: 20px 48px;
+}
+
+.earn_banner_subtitle {
+    text-transform: uppercase;
+    color: #ED1C24;
+    font-weight: 600;
+}
+
+.earn_banner_btn {
+    background-color: #2665B0;
+    padding: 22px 44px;
+    border: 0;
+    border-radius: 18px;
+    font-weight: 700;
+}
+
+.earn_banner_text {
+    font-size: clamp(16px, 5vw, 18px);
+    color: #fff;
+}
+
+.earn_banner_title {
+    font-size: clamp(36px, 5vw, 42px);
+    font-weight: 600;
+    color: #fff;
+}
+
+@media(max-width: 768px) {
+    .earn_banner_card {
+        height: auto;
+        padding: 10px;
+    }
+}
+
+@media(max-width:600px) {
+    .earn_banner_card {
+        height: auto;
+        padding: 10px;
+    }
+}

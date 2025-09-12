@@ -1,0 +1,55 @@
+.herobg {
+    background: url('../../../public/herobg.png') no-repeat top center;
+    background-size: cover;
+    /* height: 100dvh; */
+}
+
+.hero_container {
+    padding-top: 150px;
+    padding-bottom: 100px;
+}
+
+.hero_title {
+    font-size: clamp(36px, 5vw, 70px);
+    line-height: clamp(50px, 5vw, 69px);
+}
+
+.herosearch_container {
+    background-color: #F9FCFF;
+    padding: 30px;
+    border-radius: 30px;
+}
+
+.formcontrol {
+    padding: 15px 30px;
+    background-color: #EAF0F5;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+}
+
+.formbtn {
+    background-color: #ED1C24;
+    padding: 15px 30px;
+    border-radius: 18px;
+}
+
+.statsbg {
+    background: #00000080;
+    backdrop-filter: blur(3px);
+    border-radius: 12px;
+    margin-right: 18px;
+    padding: 10px;
+}
+
+.herobtn {
+    background-color: #2665B0;
+    border-radius: 18px;
+    padding: 18px 34px;
+    border: 0;
+}
+
+@media(max-width: 600px) {
+    .statsbg {
+        margin-right: 0;
+    }
+}

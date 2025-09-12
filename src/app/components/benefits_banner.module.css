@@ -1,0 +1,39 @@
+.benefits_bannerbg {
+    background: linear-gradient(rgba(0, 22, 49, 0.6)),
+        url('../../../public//benefits-bannerbg.jpg') no-repeat top center;
+    background-size: cover;
+}
+
+.benefits_banner_container {
+    padding: 150px 70px;
+}
+
+.benefits_banner_subtitle {
+    color: #ED1C24;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.listitem {
+    font-size: clamp(16px, 5vw, 24px);
+    color: #fff;
+}
+
+.benefits_banner_title {
+    font-size: clamp(36px, 5vw, 48px);
+    font-weight: 600;
+    color: #fff;
+}
+
+.benefits_banner_btn {
+    padding: 22px 44px;
+    border-radius: 18px;
+    border: 0;
+    background-color: #2665B0;
+}
+
+@media(max-width:600px) {
+    .benefits_banner_container {
+        padding: 40px 20px;
+    }
+}

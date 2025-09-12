@@ -1,0 +1,5 @@
+.promo_container {
+    background: #eaf0f5 url('../../../public/promobg.png') no-repeat bottom right;
+    background-size: contain;
+    padding: 100px 0;
+}

@@ -1,0 +1,14 @@
+.headerbg {
+    background-color: #001D3F;
+}
+
+.headerbtn {
+    background-color: #ED1C24;
+    border-radius: 18px;
+    padding: 10px 34px;
+    height: 50px;
+}
+
+.navlink_active {
+    color: #ED1C24 !important
+}
