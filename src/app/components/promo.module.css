@@ -1,5 +1,65 @@
+:root {
+    --red-color: #ED1C24;
+    --text-color: #44525E;
+    --title-color: #000;
+    --icon-bg: #0D263C;
+    --btn-bg: #2665B0;
+}
+
 .promo_container {
     background: #eaf0f5 url('../../../public/promobg.png') no-repeat bottom right;
     background-size: contain;
     padding: 100px 0;
+}
+
+.promo_subtitle {
+    color: var(--red-color);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.promo_title {
+    color: var(--title-color);
+    font-weight: 600;
+    font-size: clamp(28px, 5vw, 36px);
+}
+
+.promo_text {
+    color: var(--text-color);
+}
+
+.promo_card_title {
+    color: var(--title-color);
+    font-weight: 600;
+    font-size: clamp(20px, 5vw, 23px);
+}
+
+.call_icon_container {
+    padding: 6px;
+    background-color: var(--icon-bg);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.promo_btn {
+    background-color: var(--btn-bg);
+    border: 0;
+    border-radius: 18px;
+    padding: 18px 34px;
+}
+
+.call_title {
+    color: var(--title-color);
+    font-weight: 600;
+    font-size: clamp(16px, 5vw, 18px);
+}
+
+.call_text {
+    color: var(--title-color);
+    font-weight: 500;
+    font-size: clamp(12px, 5vw, 14px);
 }

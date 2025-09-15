@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'next/image';
 import promoimg from '../../../public/promo-img.png';
+import Button from 'react-bootstrap/Button';
 
 const promo = () => {
 
@@ -50,22 +51,38 @@ const promo = () => {
                     </Col>
                     <Col lg={6}>
                         <div>
-                            <p>Dashboard Promo</p>
-                            <h2>Grow Your Business with Prime American Living</h2>
-                            <p>Join Prime American Living and take your real estate business to the next level. Our platform empowers agents to showcase their listings, build credibility, and connect with thousands of potential renters and buyers every day.</p>
+                            <p className={promoStyles.promo_subtitle}>Dashboard Promo</p>
+                            <h2 className={promoStyles.promo_title}>Grow Your Business with Prime American Living</h2>
+                            <p className={promoStyles.promo_text}>Join Prime American Living and take your real estate business to the next level. Our platform empowers agents to showcase their listings, build credibility, and connect with thousands of potential renters and buyers every day.</p>
                         </div>
                         <Row>
                             {promoCards.map((item, index) =>
-                                <Col lg={6} key={index}>
+                                <Col lg={6} md={6} key={index}>
                                     <div className='mb-3'>
                                         <Image src={`data:image/svg+xml;utf8,${encodeURIComponent(item.icon)}`} width={50} height={50} alt='icon' />
                                     </div>
                                     <div>
-                                        <h5>{item.title}</h5>
-                                        <p>{item.text}</p>
+                                        <h5 className={promoStyles.promo_card_title}>{item.title}</h5>
+                                        <p className={promoStyles.promo_text}>{item.text}</p>
                                     </div>
                                 </Col>
                             )}
+                            <div className='d-flex align-items-center mt-3 flex-lg-row flex-md-row flex-column'>
+                                <div>
+                                    <Button variant="primary" className={promoStyles.promo_btn}>Explore properties</Button>
+                                </div>
+                                <div className='d-flex align-items-center justify-content-center ms-lg-4 mt-lg-0 ms-md-4 mt-md-0 mt-3'>
+                                    <span className={promoStyles.call_icon_container}>
+                                        <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10.8172 12.9489C9.01722 11.9409 6.78522 8.9169 6.35322 7.0449C7.14522 5.8209 7.79322 6.3969 8.22522 5.1729C8.22522 5.1009 9.37722 -1.0911 4.98522 0.204903C-4.59078 3.0849 11.1772 24.0369 17.1532 16.3329C19.8892 12.8049 13.3372 11.7969 13.2652 11.7969C11.8972 11.8689 12.2572 12.6609 10.8172 12.9489Z" fill="white" />
+                                        </svg>
+                                    </span>
+                                    <div className='ms-2'>
+                                        <span className={`${promoStyles.call_title} d-block`}>Call Us Anytime</span>
+                                        <span className={`${promoStyles.call_text} d-block`}>+00 123 456789</span>
+                                    </div>
+                                </div>
+                            </div>
                         </Row>
                     </Col>
                 </Row>

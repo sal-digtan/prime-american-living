@@ -1,0 +1,59 @@
+:root {
+    --help-bg: #DFE7ED;
+    --title-color: #000;
+    --subtitle-color: #ED1C24;
+    --btn-bg: #2665B0;
+}
+
+.helpform_container {
+    background: var(--help-bg) url('../../../public/helpformbg-img.png') no-repeat bottom center;
+    background-size: contain;
+    padding: 100px 0;
+}
+
+.helpform_subtitle {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--subtitle-color);
+}
+
+.helpform_title {
+    font-size: clamp(28px, 5vw, 36px);
+    font-weight: 600;
+    color: var(--title-color);
+}
+
+.form_container {
+    border: 1px solid #C7D5E1;
+    box-shadow: 0px 0px 20px 0px #0D263C33;
+    background-color: #FFFFFF;
+    border-radius: 40px;
+    padding: 40px 28px;
+}
+
+.form_control,
+.form_control:focus {
+    background-color: #EAF0F5;
+    border: 1px solid #C7D5E1;
+    border-radius: 18px;
+    padding: 19px 31px;
+}
+
+.form_control::placeholder {
+    color: #44525E;
+}
+
+.form_label {
+    font-size: clamp(16px, 5vw, 18px);
+    font-weight: 600;
+    color: var(--title-color)
+}
+
+.form_btn {
+    background-color: var(--btn-bg);
+    padding: 17px 34px;
+    border: 0;
+    border-radius: 18px;
+    font-weight: 500;
+}
