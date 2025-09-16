@@ -1,0 +1,53 @@
+:root {
+    --footer-bg: #001D3F;
+    --btn-color: #ED1C24;
+}
+
+.footer_container {
+    background: var(--footer-bg) url('../../../public/footerbg.png') no-repeat top center;
+    background-size: cover;
+    padding-top: 100px;
+    padding-bottom: 30px;
+}
+
+.input_container {
+    border: 1px solid var(--footer-bg) !important;
+    padding: 5px;
+    background-color: rgba(36, 87, 144, 0.3) !important;
+    border-radius: 18px;
+}
+
+.form_control,
+.form_control:focus {
+    background-color: transparent;
+    color: #fff !important;
+    border: 0;
+    border-radius: 18px !important;
+    padding: 20px;
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+.form_control::placeholder {
+    color: #fff;
+}
+
+.form_btn {
+    padding: 20px 30px;
+    border-radius: 18px !important;
+    background-color: var(--btn-color);
+}
+
+.form_check::before {
+    background-color: transparent;
+    border: 1px solid #fff;
+}
+
+.row_border {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2)
+}
+
+.social_icon:hover svg path,
+.social_icon:hover svg rect {
+    stroke: var(--btn-color);
+}

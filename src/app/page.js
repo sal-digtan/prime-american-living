@@ -9,6 +9,7 @@ import BenefitsBanner from '@/app/components/benefits_banner';
 import Promo from '@/app/components/promo';
 import HelpForm from '@/app/components/helpform';
 import Testimonials from '@/app/components/testimonials';
+import Footer from '@/app/components/footer';
 
 const page = () => {
   return (
@@ -23,6 +24,7 @@ const page = () => {
       <Promo />
       <HelpForm />
       <Testimonials />
+      <Footer />
     </div>
   )
 }

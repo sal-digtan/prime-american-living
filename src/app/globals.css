@@ -83,6 +83,15 @@ input[type="date"] {
   font-weight: 600;
 }
 
+.form-check-input {
+  background-color: transparent !important;
+}
+
+.form-check-input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 /* @media(max-width: 600px) {
   #listing-tabs {
     flex-wrap: wrap !important;
