@@ -1,0 +1,42 @@
+:root {
+    --agent-bg: #eaf0f5;
+    --text-color: #44525E;
+    --title-color: #000;
+
+}
+
+.agent_container {
+    background-color: var(--agent-bg);
+    padding: 100px 0;
+}
+
+.about_agent_subtitle {
+    color: var(--red-color);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.about_agent_title {
+    color: var(--tile-color);
+    font-size: clamp(28px, 5vw, 36px);
+    font-weight: 600;
+}
+
+.agent_img_container {
+    background: #F9FCFF;
+    border: 1px solid #C7D5E1;
+    padding: 10px;
+    width: 205px;
+    height: 205px;
+    border-radius: 50%;
+}
+
+.agent_title {
+    font-size: clamp(20px, 5vw, 24px);
+    color: var(--title-color);
+    font-weight: 600;
+}
+
+.agent_text {
+    color: var(--text-color);
+}

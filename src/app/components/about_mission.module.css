@@ -1,0 +1,58 @@
+:root {
+    --mission-bg: #DFE7ED;
+    --tile-color: #000;
+    --text-color: #44525E;
+
+}
+
+.about_mission_container {
+    background-color: var(--mission-bg);
+    padding: 100px 0;
+}
+
+.about_mission_subtitle {
+    color: var(--red-color);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.about_mission_title {
+    color: var(--tile-color);
+    font-size: clamp(28px, 5vw, 36px);
+    font-weight: 600;
+}
+
+.icon_container {
+    background: var(--mission-bg);
+    border: 1px solid #C7D5E1;
+    border-radius: 27px;
+    padding: 15px;
+}
+
+.mission_card {
+    border-radius: 40px;
+    padding: 10px;
+    border: 1px solid #C7D5E1;
+    height: 195px;
+}
+
+.step_title {
+    font-size: clamp(34px, 5vw, 48px);
+    font-weight: 600;
+    color: var(--mission-bg);
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+}
+
+.card_title {
+    color: var(--tile-color);
+    font-weight: 600;
+    font-size: clamp(18px, 5vw, 22px);
+    letter-spacing: 0px;
+    margin-left: 5px;
+}
+
+.card_text {
+    color: var(--text-color);
+}

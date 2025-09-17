@@ -1,0 +1,13 @@
+.about_hero_container {
+    background: linear-gradient(rgba(0, 0, 0, 0.6)), url('../../../public/about-herobg.jpg') no-repeat top center;
+    background-size: cover;
+    height: 400px;
+    padding-top: 200px;
+    padding-bottom: 100px;
+}
+
+.about_hero_title {
+    font-size: clamp(36px, 5vw, 54px);
+    font-weight: 600;
+    color: #fff;
+}
