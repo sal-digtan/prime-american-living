@@ -1,0 +1,13 @@
+:root {
+    --listings-bg: #eaf0f5;
+}
+
+.listings_hero_container {
+    background-color: var(--listings-bg);
+    padding-top: 150px;
+    padding-bottom: 100px;
+}
+
+.mapimg {
+    border-radius: 40px;
+}

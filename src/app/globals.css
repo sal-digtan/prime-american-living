@@ -88,17 +88,62 @@ input[type="date"] {
 }
 
 .form-check-input:focus {
-  outline: none !important; 
+  outline: none !important;
   box-shadow: none !important;
 }
 
-/* @media(max-width: 600px) {
-  #listing-tabs {
-    flex-wrap: wrap !important;
-    overflow-x: auto !important;
-    scrollbar-width: none !important;
-    white-space: nowrap !important;
-    display: inline-block !important;
-    width: 100% !important;
-  }
-} */
+.page-link {
+  border: 1px solid #C7D5E1;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  color: #000 !important;
+  text-align: center !important;
+  padding-top: 12px !important;
+  font-weight: 600;
+}
+
+.page-item:last-child .page-link {
+  border-top-right-radius: 50% !important;
+  border-bottom-right-radius: 50% !important;
+  width: 50px;
+  height: 50px;
+  padding-top: 10px;
+}
+
+.active .page-link {
+  background-color: #ED1C24 !important;
+  color: #fff !important;
+  border: 0;
+}
+
+.page-item:first-child .page-link {
+  border-top-left-radius: 50% !important;
+  border-bottom-left-radius: 50% !important;
+}
+
+.radio-buttons input[type="radio"] {
+  /* Hide the default radio button */
+  display: none;
+}
+
+.radio-buttons label {
+  /* Style the label to look like a button */
+  display: inline-block;
+  padding: 20px 35px;
+  border: 1px solid #C7D5E1;
+  cursor: pointer;
+  background-color: #EAF0F5;
+  margin-bottom: 10px;
+  text-align: center;
+  border-radius: 18px;
+  width: 100%;
+  font-weight: 600;
+}
+
+.radio-buttons input[type="radio"]:checked+label {
+  /* Style the label when its associated radio button is checked */
+  color: #000;
+  border: 1px solid #2665B0;
+
+}

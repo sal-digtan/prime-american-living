@@ -8,6 +8,7 @@ import logo from '../../../public/prime-american-logo.png';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+import Link from 'next/link'
 
 const footer = () => {
 
@@ -95,7 +96,7 @@ const footer = () => {
                             <ul className='list-unstyled'>
                                 {quickLinks.map((item, index) =>
                                     <li key={index} className='py-2'>
-                                        <a href={item.path} className='text-decoration-none text-white'>{item.title}</a>
+                                        <Link href={item.path} className='text-decoration-none text-white'>{item.title}</Link>
                                     </li>
                                 )}
                             </ul>
