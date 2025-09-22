@@ -1,0 +1,105 @@
+:root {
+    --title-color: #000;
+    --dbtn-color: #2665B0;
+    --listings-bg: #eaf0f5;
+    --primary-red: #ED1C24;
+}
+
+.container {
+    padding-top: 150px;
+    padding-bottom: 100px;
+    background-color: var(--listings-bg);
+}
+
+.title {
+    color: var(--title-color);
+    font-weight: 600;
+    font-size: clamp(40px, 5vw, 64px);
+}
+
+.favorite_btn {
+    border: 1px solid var(--dbtn-color);
+    border-radius: 18px;
+    padding: 17px 34px;
+    color: var(--dbtn-color);
+    font-weight: 500;
+    font-size: clamp(16px, 5vw, 18px);
+}
+
+.favorite_btn:hover {
+    background-color: var(--dbtn-color);
+    border: 1px solid var(--dbtn-color);
+}
+
+.favorite_btn:hover svg path {
+    fill: #fff;
+}
+
+.buy_btn {
+    border: 1px solid var(--dbtn-color);
+    border-radius: 18px;
+    padding: 17px 34px;
+    color: #fff;
+    font-weight: 500;
+    font-size: clamp(16px, 5vw, 18px);
+    background-color: var(--dbtn-color);
+}
+
+.hero_img {
+    border-radius: 40px;
+}
+
+.img_btn {
+    padding: 10px;
+    border-radius: 8px;
+    width: 56px;
+    height: 56px;
+}
+
+.specscard_container {
+    padding: 50px 30px;
+    background: #001B3B url('../../../public/footerbg.png') no-repeat top center;
+    background-size: cover;
+    border-radius: 40px;
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    justify-items: center;
+    justify-content: center;
+    border: 10px solid var(--listings-bg);
+}
+
+.specscard_text {
+    font-weight: 600;
+    color: var(--primary-red);
+}
+
+.specscard_title {
+    font-weight: 600;
+    font-size: clamp(26px, 5vw, 35px);
+}
+
+@media(max-width: 768px) {
+    .specscard_container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        position: unset !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: translate(0) !important;
+        width: 100%;
+    }
+}
+
+@media(max-width: 600px) {
+    .specscard_container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        position: unset !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: translate(0) !important;
+        width: 100%;
+    }
+}

@@ -1,0 +1,44 @@
+:root {
+    --title-color: #000;
+    --dbtn-color: #2665B0;
+    --listings-bg: #eaf0f5;
+    --primary-red: #ED1C24;
+}
+
+.container {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: var(--listings-bg);
+}
+
+.overview_img {
+    border-radius: 16px;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.mainimg_container {
+    height: 454px;
+    margin-bottom: 20px;
+}
+
+.thumbnailimg_container {
+    height: 134px;
+}
+
+.overview_subtitle {
+    font-weight: 600;
+    color: var(--primary-red);
+    text-transform: uppercase;
+}
+
+.overview_title {
+    font-weight: 600;
+    color: var(--title-color);
+    font-size: clamp(28px, 5vw, 36px);
+}
+
+.overview_text {
+    color: var(--title-color);
+}
