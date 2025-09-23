@@ -147,3 +147,34 @@ input[type="date"] {
   border: 1px solid #2665B0;
 
 }
+
+#floor-tabs .nav-item .nav-link {
+  padding: 8px 16px;
+  border-radius: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+  background-color: #fff;
+  margin-left: 10px;
+}
+
+#floor-tabs .nav-item .nav-link.active {
+  padding: 8px 16px;
+  border-radius: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #2665B0;
+}
+
+@media(max-width: 600px) {
+
+  #floor-tabs .nav-item:first-child .nav-link,
+  #floor-tabs .nav-item:last-child .nav-link {
+    margin-left: 0;
+  }
+
+  #floor-tabs .nav-item:first-child .nav-link {
+    margin-bottom: 10px;
+  }
+}
