@@ -14,7 +14,11 @@ import Card from 'react-bootstrap/Card';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import floorImg from '../../../public/floor-img.png';
-
+import videoImg from '../../../public/video-img.png';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
+import agentImg from '../../../public/agent-img.png';
 
 const details_overview = () => {
 
@@ -326,6 +330,72 @@ const details_overview = () => {
         },
     ]
 
+    const [modalShow, setModalShow] = useState(false);
+
+    function VideoModal(props) {
+        return (
+            <Modal
+                {...props}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+                className='border-0'
+                id='video-modal'
+            >
+                <Modal.Body>
+                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/3H6Evu2hPpE?si=zfLr8nAeoQhSEWe_" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                </Modal.Body>
+            </Modal>
+        );
+    }
+
+    const leaseInfo = [
+        'Price: $ 5.1M', 'Monthly rent: $ 1.5k', 'Security Deposits: $ 10k',
+        'lease Length: 2 Years', 'Application fee: $ 5k'
+    ]
+
+    const contactData = [
+        {
+            id: 1,
+            icon: `<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16.4688 12.3237L15.75 15.48C15.6042 15.9591 15.2812 16.2091 14.7812 16.23C12.1354 16.2091 9.73958 15.5529 7.59375 14.2612C5.44792 12.9904 3.73958 11.2821 2.46875 9.13623C1.17708 6.9904 0.520833 4.59456 0.5 1.94873C0.520833 1.44873 0.770833 1.12581 1.25 0.97998L4.40625 0.26123C4.90625 0.177896 5.28125 0.365397 5.53125 0.82373L6.96875 4.19873C7.13542 4.65706 7.04167 5.04248 6.6875 5.35498L5.03125 6.69873C5.55208 7.78206 6.23958 8.75081 7.09375 9.60498C7.94792 10.4591 8.91667 11.1571 10 11.6987L11.375 10.0112C11.6875 9.65706 12.0729 9.56331 12.5312 9.72998L15.9062 11.1675C16.3438 11.4383 16.5312 11.8237 16.4688 12.3237Z" fill="#16243E"/>
+</svg>`,
+            text: '89 (09) 2346 1894'
+        },
+        {
+            id: 2,
+            icon: `<svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18 1.72998H6C5.58333 1.75081 5.22917 1.89665 4.9375 2.16748C4.66667 2.45915 4.52083 2.81331 4.5 3.22998V3.26123L11.1562 8.38623C11.7188 8.78206 12.2917 8.78206 12.875 8.38623L19.5 3.26123V3.22998C19.4792 2.81331 19.3333 2.45915 19.0625 2.16748C18.7708 1.89665 18.4167 1.75081 18 1.72998ZM12 9.72998C11.4792 9.72998 10.9896 9.56331 10.5312 9.22998L4.5 4.51123V11.23C4.52083 11.6466 4.66667 12.0008 4.9375 12.2925C5.22917 12.5633 5.58333 12.7091 6 12.73H18C18.4167 12.7091 18.7708 12.5633 19.0625 12.2925C19.3333 12.0008 19.4792 11.6466 19.5 11.23V4.51123L13.4688 9.22998C13.0104 9.56331 12.5208 9.72998 12 9.72998ZM15.75 15.73H5.25C4.1875 15.7091 3.30208 15.3446 2.59375 14.6362C1.88542 13.9279 1.52083 13.0425 1.5 11.98V4.47998C1.54167 4.02165 1.79167 3.77165 2.25 3.72998C2.70833 3.77165 2.95833 4.02165 3 4.47998V11.98C3.02083 12.6258 3.23958 13.1571 3.65625 13.5737C4.07292 13.9904 4.60417 14.2091 5.25 14.23H15.75C16.2083 14.2716 16.4583 14.5216 16.5 14.98C16.4583 15.4383 16.2083 15.6883 15.75 15.73Z" fill="#16243E"/>
+</svg>`,
+            text: 'example@gmail.com'
+        },
+        {
+            id: 3,
+            icon: `<svg width="13" height="17" viewBox="0 0 13 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.75 15.8237C5.1875 15.1362 4.48958 14.2091 3.65625 13.0425C2.84375 11.8966 2.125 10.7091 1.5 9.47998C0.875 8.25081 0.541667 7.16748 0.5 6.22998C0.541667 4.52165 1.125 3.10498 2.25 1.97998C3.375 0.85498 4.79167 0.271647 6.5 0.22998C8.20833 0.271647 9.625 0.85498 10.75 1.97998C11.875 3.10498 12.4583 4.52165 12.5 6.22998C12.4583 7.16748 12.125 8.25081 11.5 9.47998C10.8542 10.7091 10.125 11.8966 9.3125 13.0425C8.5 14.2091 7.8125 15.1362 7.25 15.8237C7.04167 16.0737 6.79167 16.1987 6.5 16.1987C6.20833 16.1987 5.95833 16.0737 5.75 15.8237ZM6.5 8.22998C7.0625 8.20915 7.53125 8.01123 7.90625 7.63623C8.28125 7.26123 8.47917 6.79248 8.5 6.22998C8.47917 5.66748 8.28125 5.19873 7.90625 4.82373C7.53125 4.44873 7.0625 4.25081 6.5 4.22998C5.9375 4.25081 5.46875 4.44873 5.09375 4.82373C4.71875 5.19873 4.52083 5.66748 4.5 6.22998C4.52083 6.79248 4.71875 7.26123 5.09375 7.63623C5.46875 8.01123 5.9375 8.20915 6.5 8.22998Z" fill="#16243E"/>
+</svg>`,
+            text: 'UK, 1212; 102/B New Elephant Road London'
+        },
+    ]
+
+    const contactForm = [
+        {
+            id: 1,
+            placeholder: 'Full Name',
+            type: 'text'
+        },
+        {
+            id: 2,
+            placeholder: 'Email address',
+            type: 'email'
+        },
+        {
+            id: 3,
+            placeholder: 'Message Here*',
+            type: 'text'
+        }
+    ]
+
     return (
         <section className={details_overviewStyles.container}>
             <Container fluid className='px-lg-4'>
@@ -456,6 +526,85 @@ const details_overview = () => {
                                     )}
                                 </Tabs>
                             </div>
+                        </div>
+                        <div className='py-4'>
+                            <div className='mb-4'>
+                                <h4 className={details_overviewStyles.overview_title}>Property Video & 3d Plan</h4>
+                            </div>
+                            <div className='position-relative'>
+                                <Image src={videoImg} width='100%' height='100%' alt='video-img' className='img-fluid' />
+                                <div className='position-absolute top-50 start-50 translate-middle'>
+                                    <Button variant='danger' className={details_overviewStyles.video_btn} onClick={() => setModalShow(true)}>play</Button>
+                                </div>
+                                <VideoModal
+                                    show={modalShow}
+                                    onHide={() => setModalShow(false)}
+                                />
+                            </div>
+                        </div>
+                    </Col>
+                    <Col lg={4}>
+                        <div className={details_overviewStyles.lease_container}>
+                            <div className={`${details_overviewStyles.lease_title_container} mb-4`}>
+                                <h5 className={details_overviewStyles.lease_title}>Price and Lease info</h5>
+                            </div>
+                            <Row>
+                                {leaseInfo.map((item) =>
+                                    <Col lg={6} key={item}>
+                                        <p className={details_overviewStyles.lease_text}>{item}</p>
+                                    </Col>
+                                )}
+                            </Row>
+                        </div>
+                        <div className={details_overviewStyles.lease_container}>
+                            <div className={`${details_overviewStyles.lease_title_container} mb-4`}>
+                                <h5 className={details_overviewStyles.lease_title}>Property Contact</h5>
+                            </div>
+                            {contactData.map((item, index) =>
+                                <div key={index}>
+                                    <span className={`${details_overviewStyles.contact_text} d-block mb-3`}>
+                                        <Image src={`data:image/svg+xml;utf8,${encodeURIComponent(item.icon)}`} width={16} height={16} alt='icon' className='me-2' />
+                                        {item.text}
+                                    </span>
+                                </div>
+                            )}
+                        </div>
+                        <div className={details_overviewStyles.lease_container}>
+                            <div className={`${details_overviewStyles.lease_title_container} mb-4`}>
+                                <h5 className={details_overviewStyles.lease_title}>Contact Listing Owner</h5>
+                            </div>
+                            {contactForm.map((item, index) =>
+                                <Form key={index}>
+                                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                        {item.id === 3 ?
+                                            <Form.Control as="textarea" rows={3} placeholder={item.placeholder} className={details_overviewStyles.contact_form_input} /> :
+                                            <Form.Control type={item.type} placeholder={item.placeholder} className={details_overviewStyles.contact_form_input} />
+                                        }
+                                    </Form.Group>
+                                </Form>
+                            )}
+                            <div>
+                                <Button variant='primary' className={details_overviewStyles.contact_submit_btn}>SUBMIT NOW</Button>
+                            </div>
+                        </div>
+                        <div className={details_overviewStyles.lease_container}>
+                            <div className={`${details_overviewStyles.lease_title_container} mb-4`}>
+                                <h5 className={details_overviewStyles.lease_title}>Author Info</h5>
+                            </div>
+                            <div className='mb-4'>
+                                <span className='d-flex align-items-center'>
+                                    <Image src={agentImg} width='100%' height='100%' alt='agent-img' className='img-fluid me-3' />
+                                    <h5 className={details_overviewStyles.lease_title}>Tushar Raja</h5>
+                                </span>
+                            </div>
+                            {contactData.map((item, index) =>
+                                <div key={index}>
+                                    <span className={`${details_overviewStyles.contact_text} d-block mb-3`}>
+                                        <Image src={`data:image/svg+xml;utf8,${encodeURIComponent(item.icon)}`} width={16} height={16} alt='icon' className='me-2' />
+                                        {item.text}
+                                    </span>
+                                </div>
+                            )}
                         </div>
                     </Col>
                 </Row>

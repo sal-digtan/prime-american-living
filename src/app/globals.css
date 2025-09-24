@@ -167,6 +167,11 @@ input[type="date"] {
   background-color: #2665B0;
 }
 
+#video-modal .modal-content {
+  background: transparent !important;
+  border: 0 !important;
+}
+
 @media(max-width: 600px) {
 
   #floor-tabs .nav-item:first-child .nav-link,

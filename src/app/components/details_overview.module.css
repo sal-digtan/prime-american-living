@@ -109,6 +109,62 @@
     height: 100%;
 }
 
+.video_btn {
+    background: #E3572D;
+    text-transform: uppercase;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    font-size: clamp(18px, 5vw, 24px);
+    font-weight: 600;
+}
+
+.lease_container {
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 16px;
+    margin-bottom: 30px;
+}
+
+.lease_title_container {
+    border-bottom: 1px solid #EAF0F5
+}
+
+.lease_title {
+    color: var(--title-color);
+    font-size: clamp(20px, 5vw, 24px);
+    font-weight: 600;
+}
+
+.lease_text {
+    font-weight: 600;
+    color: var(--title-color);
+}
+
+.contact_text {
+    color: var(--title-color);
+}
+
+.contact_form_input,
+.contact_form_input:focus {
+    padding: 20px;
+    background-color: var(--listings-bg);
+    border: 1px solid var(--listings-bg);
+    border-radius: 10px;
+}
+
+.contact_form_input::placeholder {
+    color: var(--title-color)
+}
+
+.contact_submit_btn {
+    padding: 21px 32px;
+    background-color: var(--dbtn-color);
+    border: 1px solid var(--title-color);
+    border-radius: 32px;
+    font-weight: 600;
+}
+
 @media(max-width: 600px) {
 
     .mainimg_container,

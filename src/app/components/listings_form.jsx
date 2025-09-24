@@ -13,6 +13,7 @@ import Pagination from 'react-bootstrap/Pagination';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
+import Link from 'next/link'
 
 const listings_form = () => {
 
@@ -361,7 +362,7 @@ const listings_form = () => {
                         <Row>
                             {listingsData.map((item, index) =>
                                 <Col key={index} lg={6} md={6} className='mb-3'>
-                                    <a href="#" className='text-decoration-none'>
+                                    <Link href="/listings/details" className='text-decoration-none'>
                                         <Card className={listings_formStyles.slidercard}>
                                             <Card.Body>
                                                 <div className={`${listings_formStyles.sliderimg_container} position-relative`}>
@@ -398,7 +399,7 @@ const listings_form = () => {
                                                 </div>
                                             </Card.Body>
                                         </Card>
-                                    </a>
+                                    </Link>
                                 </Col>
                             )}
                         </Row>
@@ -473,7 +474,9 @@ const listings_form = () => {
                                     )}
                                 </Row>
                                 <div className='mt-3'>
-                                    <Button variant='primary' className={`${listings_formStyles.form_btn} d-block w-100`}>View Listing</Button>
+                                    <Link href='/listings/details' className='text-decoration-none'>
+                                        <Button variant='primary' className={`${listings_formStyles.form_btn} d-block w-100`}>View Listing</Button>
+                                    </Link>
                                 </div>
                             </Form>
                         }
