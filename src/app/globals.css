@@ -92,6 +92,7 @@ input[type="date"] {
   box-shadow: none !important;
 }
 
+/* pagination css */
 .page-link {
   border: 1px solid #C7D5E1;
   border-radius: 50%;
@@ -121,6 +122,8 @@ input[type="date"] {
   border-top-left-radius: 50% !important;
   border-bottom-left-radius: 50% !important;
 }
+
+/* pagination css */
 
 .radio-buttons input[type="radio"] {
   /* Hide the default radio button */
