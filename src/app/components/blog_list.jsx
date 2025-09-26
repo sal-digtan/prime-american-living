@@ -19,6 +19,7 @@ import postimg1 from '../../../public/post-img1.png';
 import postimg2 from '../../../public/post-img2.png';
 import postimg3 from '../../../public/post-img3.png';
 import blogadImg from '../../../public/blog-ad-img.png';
+import Link from 'next/link';
 
 const blog_list = () => {
 
@@ -118,7 +119,7 @@ const blog_list = () => {
                         <Row>
                             {blogData.map((item, index) =>
                                 <Col key={index} lg={6} md={6}>
-                                    <a href="#" className='text-decoration-none'>
+                                    <Link href="/blog/details" className='text-decoration-none'>
                                         <Card className={bloglistStyles.bloglist_card}>
                                             <div className='position-relative'>
                                                 <Image src={item.img} width='100%' height='100%' alt='bloglist-img' className={`${bloglistStyles.card_img} img-fluid`} />
@@ -143,7 +144,7 @@ const blog_list = () => {
                                                 </p>
                                             </div>
                                         </Card>
-                                    </a>
+                                    </Link>
                                 </Col>
                             )}
                         </Row>
@@ -166,7 +167,7 @@ const blog_list = () => {
                                     <h4 className={bloglistStyles.right_col_title}>Recent Posts</h4>
                                 </div>
                                 {postsData.map((item, index) =>
-                                    <a href='#' key={index} className='text-decoration-none'>
+                                    <Link href='/blog/details' key={index} className='text-decoration-none'>
                                         <div className='mb-3 d-flex'>
                                             <div>
                                                 <Image src={item.img} width='100%' height='100%' alt='post-img' className={bloglistStyles.posts_img} />
@@ -176,7 +177,7 @@ const blog_list = () => {
                                                 <h5 className={bloglistStyles.posts_title}>{item.title}</h5>
                                             </div>
                                         </div>
-                                    </a>
+                                    </Link>
                                 )}
                             </div>
                             <div className='py-3'>
