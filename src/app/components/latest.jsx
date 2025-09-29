@@ -630,7 +630,7 @@ const latest = () => {
                                 className="mb-5 border-0 d-flex justify-content-center"
                             >
                                 <Tab eventKey="newest" title={<span><Image src={tabimg1} width='100%' height='100%' alt='tab-img' className='img-fluid d-none d-lg-inline' /> Newest</span>}>
-                                    <div className="slider-container position-relative">
+                                    <div className="slider-container position-relative featured-slider">
                                         <Slider ref={slider => {
                                             sliderRef = slider;
                                         }} {...settings}>

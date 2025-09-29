@@ -114,7 +114,7 @@ const testimonials = () => {
                             <p className={testimonialsStyles.testimonials_subtitle}>Testimonials</p>
                             <h2 className={testimonialsStyles.testimonials_title}>What Our Clients Say</h2>
                         </div>
-                        <div className="slider-container position-relative">
+                        <div className="slider-container position-relative featured-slider">
                             <Slider ref={slider => {
                                 sliderRef = slider;
                             }} {...settings}>

@@ -63,12 +63,12 @@ input[type="date"] {
   appearance: none;
 } */
 
-.slick-slide>div {
+.featured-slider .slick-slide>div {
   /* Assuming a div inside each slide */
   padding: 0 10px;
 }
 
-.slick-dots {
+.featured-slider .slick-dots {
   position: absolute !important;
   bottom: -40px !important;
 }
@@ -148,8 +148,46 @@ input[type="date"] {
   /* Style the label when its associated radio button is checked */
   color: #000;
   border: 1px solid #2665B0;
-
 }
+
+/* singup radio btns */
+
+.radio-buttons1 input[type="radio"] {
+  /* Hide the default radio button */
+  display: none;
+}
+
+.radio-buttons1 label {
+  /* Style the label to look like a button */
+  display: inline-block;
+  padding: 24px 16px;
+  border: 1px solid #C7D5E1;
+  cursor: pointer;
+  background-color: #fff;
+  text-align: center;
+  border-radius: 24px;
+  width: 100%;
+  font-weight: 600;
+}
+
+.radio-buttons1 input[type="radio"]:checked+label {
+  /* Style the label when its associated radio button is checked */
+  color: #000;
+  border: 2px solid #2665B0;
+  background-color: #EAF0F5;
+}
+
+.radio-buttons1:first-child {
+  margin-right: 10px;
+}
+
+@media(max-width: 600px) {
+  .radio-buttons1:first-child {
+    margin-bottom: 10px;
+  }
+}
+
+/* singup radio btns */
 
 #floor-tabs .nav-item .nav-link {
   padding: 8px 16px;

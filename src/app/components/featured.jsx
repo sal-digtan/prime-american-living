@@ -639,7 +639,7 @@ const featured = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="slider-container position-relative">
+                        <div className="slider-container position-relative featured-slider">
                             <Slider ref={slider => {
                                 sliderRef = slider;
                             }} {...settings}>
