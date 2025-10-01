@@ -83,11 +83,11 @@ input[type="date"] {
   font-weight: 600;
 }
 
-.form-check-input {
+#footer-check {
   background-color: transparent !important;
 }
 
-.form-check-input:focus {
+#footer-check:focus {
   outline: none !important;
   box-shadow: none !important;
 }
@@ -223,4 +223,13 @@ input[type="date"] {
   #floor-tabs .nav-item:first-child .nav-link {
     margin-bottom: 10px;
   }
+}
+
+#terms-check {
+  border-radius: 0 !important;
+}
+
+#terms-check:checked {
+  background-color: #2665B0;
+  border-color: #2665B0;
 }

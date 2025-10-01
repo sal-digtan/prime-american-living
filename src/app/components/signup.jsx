@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import signupStyles from '@/app/components/signup.module.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -11,6 +11,7 @@ import Button from 'react-bootstrap/Button';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Link from 'next/link';
 
 const signup = () => {
 
@@ -98,6 +99,7 @@ const signup = () => {
 
     const settings = {
         dots: false,
+        autoplay: true,
         arrows: false,
         infinite: true,
         speed: 500,
@@ -105,46 +107,319 @@ const signup = () => {
         slidesToScroll: 1
     };
 
+    const [showUserRole, setShowUserRole] = useState(true)
+    const [showSignupForm, setShowSignupForm] = useState(false)
+    const [showInfoFields, setShowInfoFields] = useState(false)
+    const [showVerification, setShowVerfication] = useState(false)
+    const [showSuccess, setShowSuccess] = useState(false)
+
+    const formFields = [
+        {
+            id: 1,
+            name: 'fname',
+            placeholder: 'First name',
+            type: 'text'
+        },
+        {
+            id: 2,
+            name: 'lname',
+            placeholder: 'Last name',
+            type: 'text'
+        },
+        {
+            id: 3,
+            name: 'email',
+            placeholder: 'Enter Email',
+            type: 'email'
+        },
+        {
+            id: 4,
+            name: 'password',
+            placeholder: 'Password',
+            type: 'password'
+        },
+        {
+            id: 5,
+            name: 'confirm-password',
+            placeholder: 'Confirm Password',
+            type: 'password'
+        },
+    ]
+
+    const infoFields = [
+        {
+            id: 1,
+            name: 'file-upload',
+            label: 'Upload Profile Photo',
+            placeholder: '',
+            type: 'file'
+        },
+        {
+            id: 2,
+            name: 'fname',
+            label: '',
+            placeholder: 'ABC',
+            type: 'text'
+        },
+        {
+            id: 3,
+            name: 'lname',
+            label: '',
+            placeholder: 'ABC',
+            type: 'text'
+        },
+        {
+            id: 4,
+            name: 'email',
+            label: '',
+            placeholder: 'abc@gmail.com',
+            type: 'email'
+        },
+        {
+            id: 5,
+            name: 'phone',
+            label: '',
+            placeholder: 'Enter Contact Number',
+            type: 'text'
+        },
+        {
+            id: 6,
+            name: 'agency-name',
+            label: 'Agency Name',
+            placeholder: 'Prime American Living',
+            type: 'text'
+        },
+        {
+            id: 7,
+            name: 'state',
+            label: '',
+            placeholder: '',
+            type: 'text'
+        },
+        {
+            id: 8,
+            name: 'post-code',
+            label: '',
+            placeholder: 'Post Code',
+            type: 'text'
+        },
+    ]
+
+    const codeFields = [
+        {
+            id: 1,
+            type: 'text',
+        },
+        {
+            id: 2,
+            type: 'text',
+        },
+        {
+            id: 3,
+            type: 'text',
+        },
+        {
+            id: 4,
+            type: 'text',
+        },
+        {
+            id: 5,
+            type: 'text',
+        },
+        {
+            id: 6,
+            type: 'text',
+        }
+    ]
+
+    const [codeExpiry, setCodeExpiry] = useState(30);
+
+    useEffect(() => {
+        let intervalId = setInterval(() => {
+            if (codeExpiry > 0) {
+                setCodeExpiry(codeExpiry - 1);
+            } else {
+                clearInterval(intervalId);
+            }
+        }, 1000);
+
+        return () => clearInterval(intervalId);
+    }, [codeExpiry]);
+
 
     return (
         <section className={signupStyles.container}>
             <Container fluid className='ps-lg-4'>
                 <Row>
                     <Col lg={6}>
-                        <div className={signupStyles.form_container}>
-                            <div className='mb-3'>
-                                <h2 className={signupStyles.title}>Join Our Platform</h2>
-                                <p className={signupStyles.text}>Choose how you'd like to get started with our real estate platform</p>
-                            </div>
-                            <div className={`${signupStyles.radio_container} d-flex justify-content-between`}>
-                                {boardingOptions.map((item, index) =>
-                                    <div key={index} className='radio-buttons1'>
-                                        <Form.Check type="radio" aria-label="radio 1"
-                                            label=
-                                            {
-                                                <div className='d-flex align-items-center flex-column'>
-                                                    <div className={signupStyles.icon_container}>
-                                                        <Image
-                                                            src={`data:image/svg+xml;utf8,${encodeURIComponent(item.icon)}`}
-                                                            width={30}
-                                                            height={30}
-                                                            alt="form-icon"
-                                                        />
+                        {showUserRole &&
+                            <div className={signupStyles.form_container}>
+                                <div className='mb-3'>
+                                    <h2 className={signupStyles.title}>Join Our Platform</h2>
+                                    <p className={signupStyles.text}>Choose how you'd like to get started with our real estate platform</p>
+                                </div>
+                                <div className={`${signupStyles.radio_container} d-flex justify-content-between`}>
+                                    {boardingOptions.map((item, index) =>
+                                        <div key={index} className='radio-buttons1'>
+                                            <Form.Check type="radio" aria-label="radio 1"
+                                                label=
+                                                {
+                                                    <div className='d-flex align-items-center flex-column'>
+                                                        <div className={signupStyles.icon_container}>
+                                                            <Image
+                                                                src={`data:image/svg+xml;utf8,${encodeURIComponent(item.icon)}`}
+                                                                width={30}
+                                                                height={30}
+                                                                alt="form-icon"
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <h5 className={signupStyles.label_title}>{item.title}</h5>
+                                                            <span className={signupStyles.label_text}>{item.text}</span>
+                                                        </div>
                                                     </div>
-                                                    <div>
-                                                        <h5 className={signupStyles.label_title}>{item.title}</h5>
-                                                        <span className={signupStyles.label_text}>{item.text}</span>
-                                                    </div>
-                                                </div>
-                                            }
-                                            name='group' id={item.id} value={item.title} className={signupStyles.form_check} />
-                                    </div>
-                                )}
+                                                }
+                                                name='group' id={item.id} value={item.title} className={signupStyles.form_check} />
+                                        </div>
+                                    )}
+                                </div>
+                                <div>
+                                    <Button variant='primary' onClick={() => { setShowUserRole(false); setShowSignupForm(true) }} className={signupStyles.form_btn}>Continue</Button>
+                                </div>
                             </div>
-                            <div>
-                                <Button variant='primary' className={signupStyles.form_btn}>Continue</Button>
+                        }
+                        {showSignupForm &&
+                            <div className={signupStyles.form_container}>
+                                <div className='mb-4'>
+                                    <h2 className={`${signupStyles.title} mb-4`}>Sign up</h2>
+                                    <p className={signupStyles.text}>Already have an  account? <Link href='/signin' className={signupStyles.signin_link}>Sign In*</Link></p>
+                                </div>
+                                <Form>
+                                    <Row>
+                                        {formFields.map((item, index) =>
+                                            item.id === 3 ?
+                                                <Col lg={12} key={index}>
+                                                    <Form.Group className="mb-3" controlId={item.name}>
+                                                        <Form.Control type={item.type} placeholder={item.placeholder} className={`${signupStyles.email_input} border-0 border-bottom`} />
+                                                    </Form.Group>
+                                                </Col>
+                                                :
+                                                <Col lg={6} key={index}>
+                                                    <Form.Group className="mb-3" controlId={item.name}>
+                                                        <Form.Control type={item.type} placeholder={item.placeholder} className={`${item.id === 4 || item.id === 5 ? signupStyles.password_input : signupStyles.form_input} border-0 border-bottom`} />
+                                                    </Form.Group>
+                                                </Col>
+                                        )}
+                                    </Row>
+                                </Form>
+                                <div className='py-4'>
+                                    <Button variant='primary' onClick={() => { setShowSignupForm(false); setShowInfoFields(true) }} className={signupStyles.form_btn}>Sign Up</Button>
+                                </div>
+                                <div>
+                                    <Form.Check className={signupStyles.terms_check} id='terms-check' aria-label="option 1" label='By clicking Create account, I agree that I have read and accepted the Terms of Use and Privacy Policy.' />
+                                </div>
                             </div>
-                        </div>
+                        }
+                        {showInfoFields &&
+                            <div className={signupStyles.form_container}>
+                                <div className='mb-4'>
+                                    <h2 className={signupStyles.title}>Personal Info</h2>
+                                </div>
+                                <Form>
+                                    <Row>
+                                        {infoFields.map((item, index) =>
+                                            item.id === 1 ?
+                                                <Col lg={12} key={index}>
+                                                    <Form.Group controlId="formFile" className="mb-3">
+                                                        <Form.Label className={signupStyles.form_label}>{item.label}</Form.Label>
+                                                        <Form.Control type={item.type} className={`${signupStyles.form_input} border-0 border-bottom`} />
+                                                    </Form.Group>
+                                                </Col>
+                                                :
+                                                item.id === 6 ?
+                                                    <Col lg={12} key={index}>
+                                                        <Form.Group className="mb-3" controlId={item.name}>
+                                                            <Form.Label className={signupStyles.form_label}>{item.label}</Form.Label>
+                                                            <Form.Control type={item.type} placeholder={item.placeholder} className={`${signupStyles.form_input} border-0 border-bottom`} />
+                                                        </Form.Group>
+                                                    </Col>
+                                                    :
+                                                    item.id === 7 ?
+                                                        <Col lg={6} key={index}>
+                                                            <Form.Group className="mb-3" controlId={item.name}>
+                                                                <Form.Select aria-label="Default select example" className={`${signupStyles.form_input} border-0 border-bottom`}>
+                                                                    <option>State</option>
+                                                                    <option value="1">One</option>
+                                                                    <option value="2">Two</option>
+                                                                    <option value="3">Three</option>
+                                                                </Form.Select>
+                                                            </Form.Group>
+                                                        </Col>
+                                                        :
+                                                        <Col lg={6} key={index}>
+                                                            <Form.Group className="mb-3" controlId={item.name}>
+                                                                <Form.Control type={item.type} placeholder={item.placeholder} className={`${item.id === 4 ? signupStyles.email_input : item.id === 5 ? signupStyles.phone_input : signupStyles.form_input} border-0 border-bottom`} />
+                                                            </Form.Group>
+                                                        </Col>
+                                        )}
+                                    </Row>
+                                </Form>
+                                <div className='py-4'>
+                                    <Button variant='primary' onClick={() => { setShowInfoFields(false); setShowVerfication(true) }} className={signupStyles.form_btn}>Sign Up</Button>
+                                </div>
+                            </div>
+                        }
+                        {showVerification &&
+                            <div className={signupStyles.form_container}>
+                                <div className='mb-4'>
+                                    <h2 className={`${signupStyles.title} mb-4`}>Verification</h2>
+                                    <p className={signupStyles.text}>Enter 6 digit code that you received on your email.</p>
+                                </div>
+                                <Form className='mb-3'>
+                                    <Row>
+                                        {codeFields.map((item, index) =>
+                                            <Col lg={2} md={2} xs={2} key={index}>
+                                                <Form.Control type={item.type} className={signupStyles.code_input} />
+                                            </Col>
+                                        )}
+                                    </Row>
+                                </Form>
+                                <div className='py-3 text-center'>
+                                    <p className={signupStyles.code_text}>
+                                        00:{codeExpiry < 10 ? '0' + codeExpiry : codeExpiry}
+                                    </p>
+                                </div>
+                                <div className='pb-4'>
+                                    <Button variant='primary' onClick={() => { setShowVerfication(false); setShowSuccess(true) }} className={signupStyles.form_btn}>Verify</Button>
+                                </div>
+                                <div className='text-center'>
+                                    <span className={signupStyles.resend_text}>If you didn’t receive a code!
+                                        <a href="#" className={signupStyles.resend_link} onClick={() => setCodeExpiry(30)}>Resend</a>
+                                    </span>
+                                </div>
+                            </div>
+                        }
+                        {showSuccess &&
+                            <div className={signupStyles.form_container}>
+                                <div className='mb-4 text-center'>
+                                    <svg width="165" height="165" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fillRule="evenodd" clipRule="evenodd" d="M120.937 53.4869C123.229 55.7696 123.237 59.4782 120.954 61.7701L71.6015 111.323C69.3188 113.615 65.6104 113.623 63.3184 111.34L45.3198 93.4163C43.0277 91.1337 43.02 87.4251 45.3026 85.133C47.5852 82.8409 51.2937 82.8332 53.5858 85.1158L67.4345 98.907L112.654 53.5037C114.937 51.2117 118.645 51.2042 120.937 53.4869Z" fill="#4178BA" />
+                                        <path fillRule="evenodd" clipRule="evenodd" d="M82.5004 17.0556C51.4532 17.0556 25.4068 38.735 18.7208 67.7774L18.7208 67.7775C17.6324 72.5048 17.0561 77.4322 17.0561 82.4999C17.0561 118.616 46.3839 147.944 82.5004 147.944C118.617 147.944 147.945 118.616 147.945 82.4999C147.945 46.3835 118.617 17.0556 82.5004 17.0556ZM7.3051 65.1493C15.1873 30.911 45.8718 5.34131 82.5004 5.34131C125.087 5.34131 159.659 39.9138 159.659 82.4999C159.659 125.086 125.087 159.659 82.5004 159.659C39.9143 159.659 5.3418 125.086 5.3418 82.4999C5.3418 76.5412 6.01976 70.7322 7.3051 65.1493Z" fill="#4178BA" fillOpacity="0.4" />
+                                    </svg>
+                                </div>
+                                <div className='mb-4 text-center'>
+                                    <h2 className={signupStyles.title}>Successfully</h2>
+                                </div>
+                                <div className='text-center'>
+                                    <p className={signupStyles.text}>Your Account has been created successfully</p>
+                                </div>
+                                <div className='py-4'>
+                                    <Link href='/signin'>
+                                        <Button variant='primary' className={signupStyles.form_btn}>Sign In</Button>
+                                    </Link>
+                                </div>
+                            </div>
+                        }
                     </Col>
                     <Col lg={6} className='pe-0'>
                         <div className="slider-container">

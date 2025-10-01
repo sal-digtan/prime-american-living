@@ -118,7 +118,7 @@ const footer = () => {
                                     Send
                                 </Button>
                             </InputGroup>
-                            <Form.Check aria-label="option 1" label='I agree with the terms & conditions' className={`${footerStyles.form_check} text-white`} />
+                            <Form.Check aria-label="option 1" label='I agree with the terms & conditions' id='footer-check' className={`${footerStyles.form_check} text-white`} />
                         </div>
                     </Col>
                 </Row>
