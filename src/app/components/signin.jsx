@@ -158,7 +158,7 @@ const signin = () => {
                                     <p className={signinStyles.text}>Your Password has been reset successfully</p>
                                 </div>
                                 <div className='py-4'>
-                                    <Button variant='primary' onClick={() => { setShowSuccess(false); setShowNewPassword(true) }} className={signinStyles.form_btn}>Update Password</Button>
+                                    <Button variant='primary' onClick={() => { setShowSuccess(false); setShowSignIn(true) }} className={signinStyles.form_btn}>Sign In</Button>
                                 </div>
                             </div>
                         }
