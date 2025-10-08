@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import signupStyles from '@/app/components/signup.module.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -233,18 +233,37 @@ const signup = () => {
     ]
 
     const [codeExpiry, setCodeExpiry] = useState(30);
+    const [startTimer, setStartTimer] = useState(false);
+    const intervalRef = useRef(null);
+
+    // useEffect(() => {
+    //     let intervalId = setInterval(() => {
+    //         if (codeExpiry > 0) {
+    //             setCodeExpiry(codeExpiry - 1);
+    //         } else {
+    //             clearInterval(intervalId);
+    //         }
+    //     }, 1000);
+
+    //     return () => clearInterval(intervalId);
+    // }, [codeExpiry]);
 
     useEffect(() => {
-        let intervalId = setInterval(() => {
-            if (codeExpiry > 0) {
-                setCodeExpiry(codeExpiry - 1);
-            } else {
-                clearInterval(intervalId);
-            }
-        }, 1000);
+        if (startTimer && codeExpiry > 0) {
+            intervalRef.current = setInterval(() => {
+                setCodeExpiry((prevTimeLeft) => {
+                    if (prevTimeLeft > 0) {
+                        return prevTimeLeft - 1;
+                    } else {
+                        clearInterval(intervalRef.current);
+                        return 0;
+                    }
+                });
+            }, 1000);
+        }
 
-        return () => clearInterval(intervalId);
-    }, [codeExpiry]);
+        return () => clearInterval(intervalRef.current);
+    }, [startTimer, codeExpiry]);
 
 
     return (
@@ -365,7 +384,7 @@ const signup = () => {
                                     </Row>
                                 </Form>
                                 <div className='py-4'>
-                                    <Button variant='primary' onClick={() => { setShowInfoFields(false); setShowVerfication(true) }} className={signupStyles.form_btn}>Sign Up</Button>
+                                    <Button variant='primary' onClick={() => { setShowInfoFields(false); setShowVerfication(true); setStartTimer(true) }} className={signupStyles.form_btn}>Sign Up</Button>
                                 </div>
                             </div>
                         }
@@ -394,7 +413,7 @@ const signup = () => {
                                 </div>
                                 <div className='text-center'>
                                     <span className={signupStyles.resend_text}>If you didn’t receive a code!
-                                        <a href="#" className={signupStyles.resend_link} onClick={() => setCodeExpiry(30)}>Resend</a>
+                                        <a href="#" className={signupStyles.resend_link} onClick={() => { setCodeExpiry(30); setStartTimer(true) }}>Resend</a>
                                     </span>
                                 </div>
                             </div>

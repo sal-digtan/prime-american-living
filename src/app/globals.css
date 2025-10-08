@@ -233,3 +233,22 @@ input[type="date"] {
   background-color: #2665B0;
   border-color: #2665B0;
 }
+
+#dash-nav .nav-link.active {
+  background-color: #2665B0;
+  color: #fff;
+}
+
+#dash-nav .nav-link {
+  color: #000;
+  border-radius: 10px;
+  padding: 13px 5px 13px 20px;
+}
+
+#dash-nav .nav-link.active img {
+  filter: invert(1);
+}
+
+#dash-nav .nav-link.active svg path {
+  stroke: #fff;
+}

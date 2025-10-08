@@ -9,12 +9,15 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@canvasjs/react-charts": "^1.0.2",
     "bootstrap": "^5.3.8",
     "next": "15.5.2",
     "react": "19.1.0",
     "react-bootstrap": "^2.10.10",
     "react-dom": "19.1.0",
     "react-slick": "^0.31.0",
+    "slate": "^0.118.1",
+    "slate-react": "^0.117.4",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {

@@ -1,0 +1,262 @@
+.container {
+    padding: 30px 0;
+}
+
+.addlisting_btn {
+    background: #ED1C24;
+    border: 1px solid #FF3F25;
+    padding: 10px 23px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.tab_content_container {
+    background-color: #FFF9F9;
+}
+
+.stats_icon_container {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: #2665B0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart_select {
+    border: 1px solid #3F634D;
+    border-radius: 30px;
+    padding: 5px 16px;
+    width: 120px;
+}
+
+.stats_container {
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 35px 30px;
+}
+
+.chart_container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.messages_container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.attachment_container {
+    background: #F0F5F3;
+    padding: 3px 10px;
+    border-radius: 4px;
+    color: #00000080;
+    font-size: 12px;
+    width: fit-content;
+}
+
+.attachment_container a {
+    text-decoration: none;
+    color: #00000080;
+}
+
+.messages_name {
+    font-size: 15px;
+    font-weight: 500;
+    color: #00000066;
+}
+
+.messages_date {
+    color: #00000080;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.messages_title {
+    font-weight: 500;
+    font-size: 16px;
+    color: #000000;
+}
+
+.messages_text {
+    font-size: 14px;
+    color: #00000080;
+}
+
+.messages_heading {
+    font-size: 23px;
+    color: #000000;
+    font-weight: 500;
+}
+
+.stats_text {
+    font-size: 16px;
+    color: #00000080;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.stats_title {
+    font-size: clamp(30px, 5vw, 39px);
+    font-weight: 500;
+    color: #000000;
+}
+
+.sort_text {
+    color: #000000B2;
+    font-size: 15px;
+}
+
+.support_container {
+    padding: 30px 48px;
+    background-color: #fff;
+    display: flex;
+    border-bottom: 1px solid #EEEEEE
+}
+
+.support_icon_container {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #2665B01A;
+    padding: 10px 14px;
+    margin-right: 16px;
+}
+
+.support_request_title {
+    font-size: clamp(16px, 5vw, 19px);
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+.support_request_subtitle {
+    font-size: 16px;
+    color: #00000066;
+}
+
+.support_text_container {
+    padding: 30px 48px;
+    background-color: #fff;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.support_text {
+    font-size: 14px;
+    color: #000000B2;
+}
+
+.support_text_title {
+    color: #000000;
+    font-weight: 500;
+    font-size: clamp(20px, 5vw, 23px);
+}
+
+.dynamic_title {
+    color: #000000;
+    font-size: clamp(28px, 5vw, 31px);
+    font-weight: 500;
+}
+
+.file_container {
+    padding: 30px 48px;
+    background-color: #fff;
+}
+
+.file_icon_container {
+    background-color: #F1F1F1;
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.file_box {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid #0000001A;
+    margin-right: 15px;
+}
+
+.attachment_title {
+    color: #000000;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.download_text {
+    font-weight: 500;
+    color: #FF6725;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.file_title {
+    color: #000000;
+    font-size: 14px;
+}
+
+.file_size {
+    font-size: 13px;
+    color: #00000066;
+    display: block;
+}
+
+.custom_editor_container {
+    border: 1px solid #0000001A;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    padding: 10px 20px;
+    margin: 10px 48px;
+}
+
+.email_input_container {
+    border-bottom: 1px solid #0000001A;
+}
+
+.reply_btn {
+    background: #2665B0;
+    border-radius: 10px;
+    padding: 10px 26px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+@media(max-width:768px) {
+    .stats_container {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        border-radius: 20px;
+        background-color: #fff;
+        padding: 20px;
+    }
+}
+
+@media(max-width:600px) {
+    .stats_container {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        border-radius: 20px;
+        background-color: #fff;
+        padding: 20px;
+    }
+
+    .support_container,
+    .support_text_container,
+    .file_container,
+    .custom_editor_container {
+        padding: 5px;
+    }
+
+    .custom_editor_container {
+        margin: 5px;
+    }
+}
