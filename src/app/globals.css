@@ -252,3 +252,11 @@ input[type="date"] {
 #dash-nav .nav-link.active svg path {
   stroke: #fff;
 }
+
+#utility-checks .form-check-input {
+  border: 1px solid #000 !important;
+}
+
+#utility-checks .form-check-input:checked {
+  background-color: #000 !important;
+}

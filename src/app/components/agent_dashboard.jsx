@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, } from 'react'
+import React, { useRef, useState, useContext } from 'react'
 import agent_dashboardStyles from '@/app/components/agent_dashboard.module.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -14,6 +14,8 @@ import userImg from '../../../public/user-avatar.png';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import dynamic from 'next/dynamic';
 import Form from 'react-bootstrap/Form';
+import CloseButton from 'react-bootstrap/CloseButton';
+import { LocationContext } from '@/app/context/LocationContext';
 
 const Chart = dynamic(() => import('../components/Chart'), {
     ssr: false,
@@ -23,6 +25,9 @@ const CustomEditor = dynamic(() => import('../components/custom-editor'), {
     ssr: false
 });
 
+const LocationSearch = dynamic(() => import('../components/LocationSearch'), {
+    ssr: false
+});
 
 const agent_dashboard = () => {
 
@@ -272,6 +277,342 @@ const agent_dashboard = () => {
     ]
 
     const [dynamicTitle, setDynamicTitle] = useState('Dashboard')
+
+    const overviewFields = [
+        {
+            id: 1,
+            label: 'Property Title*',
+            placeholder: 'Your Property Name',
+            type: 'text'
+        },
+        {
+            id: 2,
+            label: 'Category*',
+            placeholder: 'Select Category',
+            type: 'text'
+        },
+        {
+            id: 3,
+            label: 'Description*',
+            placeholder: 'Write about property...',
+            type: 'text'
+        },
+        {
+            id: 4,
+            label: 'Listing Status*',
+            placeholder: 'Select Status',
+            type: 'text'
+        },
+        {
+            id: 5,
+            label: 'Availability Date*',
+            placeholder: '',
+            type: 'date'
+        },
+    ]
+
+    const pricingFields = [
+        {
+            id: 1,
+            label: 'Monthly Rent*',
+            placeholder: '$2,500',
+            type: 'text'
+        },
+        {
+            id: 2,
+            label: 'Monthly Rent*',
+            placeholder: '$2,500',
+            type: 'text'
+        },
+        {
+            id: 3,
+            label: 'Lease Length (Months)*',
+            placeholder: 'Select Duration',
+            type: 'text'
+        },
+        {
+            id: 4,
+            label: 'Application Fee*',
+            placeholder: '$50',
+            type: 'text'
+        },
+    ]
+
+    const floorFields = [
+        {
+            id: 1,
+            label: 'Square Footage*',
+            placeholder: '500',
+            type: 'text'
+        },
+        {
+            id: 2,
+            label: 'Bedrooms*',
+            placeholder: 'Select',
+            type: 'text'
+        },
+        {
+            id: 3,
+            label: 'Units Available',
+            placeholder: '1',
+            type: 'text'
+        },
+        {
+            id: 4,
+            label: 'Floor Level*',
+            placeholder: 'Select Floor',
+            type: 'text'
+        },
+    ]
+
+    const policiesFields = [
+        {
+            id: 1,
+            label: 'Pet Policy*',
+            placeholder: 'No Pets Allowed',
+            type: 'text'
+        },
+        {
+            id: 2,
+            label: 'Pet Deposit*',
+            placeholder: '$500',
+            type: 'text'
+        },
+        {
+            id: 3,
+            label: 'Pet Rent (Monthly)',
+            placeholder: '$500',
+            type: 'text'
+        },
+        {
+            id: 4,
+            label: 'Smoking Policy*',
+            placeholder: 'No Smoking',
+            type: 'text'
+        },
+    ]
+
+    const utilitiesFields = [
+        {
+            id: 1,
+            label: 'Water',
+            type: 'text'
+        },
+        {
+            id: 2,
+            label: 'Electricity',
+            type: 'text'
+        },
+        {
+            id: 3,
+            label: 'Gas',
+            type: 'text'
+        },
+        {
+            id: 4,
+            label: 'Internet',
+            type: 'text'
+        },
+        {
+            id: 5,
+            label: 'Cable TV',
+            type: 'text'
+        },
+        {
+            id: 6,
+            label: 'Trash',
+            type: 'text'
+        },
+        {
+            id: 7,
+            label: 'Parking Availability',
+            placeholder: 'No Smoking',
+            type: 'text'
+        },
+        {
+            id: 8,
+            label: 'Parking Cost (Monthly)*',
+            placeholder: '$500',
+            type: 'text'
+        },
+        {
+            id: 9,
+            label: 'Add option ',
+            placeholder: 'Select option or write...',
+            type: 'text'
+        },
+    ]
+
+    const amenitiesFields = [
+        {
+            id: 1,
+            label: 'A/C & Heating',
+            type: 'text'
+        },
+        {
+            id: 2,
+            label: 'Garages',
+            type: 'text'
+        },
+        {
+            id: 3,
+            label: 'Swimming Pool',
+            type: 'text'
+        },
+        {
+            id: 4,
+            label: 'Parking',
+            type: 'text'
+        },
+        {
+            id: 5,
+            label: 'Lake View',
+            type: 'text'
+        },
+        {
+            id: 6,
+            label: 'Garden',
+            type: 'text'
+        },
+        {
+            id: 7,
+            label: 'Disabled Access',
+            type: 'text'
+        },
+        {
+            id: 8,
+            label: 'Pet Friendly',
+            type: 'text'
+        },
+        {
+            id: 9,
+            label: 'Ceiling Height',
+            type: 'text'
+        },
+        {
+            id: 10,
+            label: 'Outdoor Shower',
+            type: 'text'
+        },
+        {
+            id: 11,
+            label: 'Refrigerator',
+            type: 'text'
+        },
+        {
+            id: 12,
+            label: 'Fireplace',
+            type: 'text'
+        },
+        {
+            id: 13,
+            label: 'Wifi',
+            type: 'text'
+        },
+        {
+            id: 14,
+            label: 'TV Cable',
+            type: 'text'
+        },
+        {
+            id: 15,
+            label: 'Barbeque',
+            type: 'text'
+        },
+        {
+            id: 16,
+            label: 'Laundry',
+            type: 'text'
+        },
+        {
+            id: 17,
+            label: 'Dryer',
+            type: 'text'
+        },
+        {
+            id: 18,
+            label: 'Lawn',
+            type: 'text'
+        },
+        {
+            id: 19,
+            label: 'Elevator',
+            type: 'text'
+        },
+    ]
+
+    const addressFields = [
+        {
+            id: 1,
+            label: 'Address*',
+            placeholder: '145/A, Ranchview',
+            type: 'text'
+        },
+        {
+            id: 2,
+            label: 'State*',
+            placeholder: 'Select State',
+            type: 'text'
+        },
+        {
+            id: 3,
+            label: 'City*',
+            placeholder: 'Select City',
+            type: 'text'
+        },
+        {
+            id: 4,
+            label: 'Zipcode*',
+            placeholder: 'Enter Zip code',
+            type: 'text'
+        },
+        {
+            id: 5,
+            label: 'Map Location*',
+            placeholder: '3911 Firestone Blvd, South Gate, CA 90280, United States',
+            type: 'text'
+        },
+    ]
+
+    const [selectedFiles, setSelectedFiles] = useState([]);
+    const fileInputRef = useRef(null);
+
+    const handleFileChange = (event) => {
+        const newFiles = Array.from(event.target.files);
+        setSelectedFiles([...selectedFiles, ...newFiles]);
+    };
+
+    const handleButtonClick = () => {
+        fileInputRef.current.click();
+    };
+
+    const handleRemoveFile = (index) => {
+        const updatedFiles = [...selectedFiles];
+        updatedFiles.splice(index, 1);
+        setSelectedFiles(updatedFiles);
+    };
+
+    const [selectedFiles1, setSelectedFiles1] = useState([]);
+    const fileInputRef1 = useRef(null);
+
+    const handleFileChange1 = (event) => {
+        const newFiles1 = Array.from(event.target.files);
+        setSelectedFiles1([...selectedFiles1, ...newFiles1]);
+    };
+
+    const handleButtonClick1 = () => {
+        fileInputRef1.current.click();
+    };
+
+    const handleRemoveFile1 = (index) => {
+        const updatedFiles1 = [...selectedFiles1];
+        updatedFiles1.splice(index, 1);
+        setSelectedFiles1(updatedFiles1);
+    };
+
+    const { locationSearch, setLocationSearch } = useContext(LocationContext)
+
+    console.log(locationSearch);
 
     return (
         <section className={agent_dashboardStyles.container}>
@@ -741,6 +1082,311 @@ const agent_dashboard = () => {
                                                     <div>
                                                         <Button variant='primary' className={agent_dashboardStyles.reply_btn}>Reply</Button>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </Tab.Pane>
+                                        <Tab.Pane eventKey="Add New Property">
+                                            <div className={agent_dashboardStyles.addlisting_container}>
+                                                <div className='mb-4'>
+                                                    <h4 className={agent_dashboardStyles.addlisting_title}>Overview</h4>
+                                                </div>
+                                                <Form>
+                                                    <Row>
+                                                        {overviewFields.map((item, index) =>
+                                                            item.id === 3 ?
+                                                                <Col lg={12} key={index}>
+                                                                    <Form.Group className="mb-4" controlId="exampleForm.ControlTextarea1">
+                                                                        <Form.Label className={agent_dashboardStyles.addlisting_label}>{item.label}</Form.Label>
+                                                                        <Form.Control as="textarea" rows={3} placeholder={item.placeholder} className={agent_dashboardStyles.addlisting_input} />
+                                                                    </Form.Group>
+                                                                </Col>
+                                                                :
+                                                                <Col lg={6} key={index}>
+                                                                    <Form.Group className="mb-4" controlId="exampleForm.ControlInput1">
+                                                                        <Form.Label className={agent_dashboardStyles.addlisting_label}>{item.label}</Form.Label>
+                                                                        {item.id === 2 || item.id === 4 ?
+                                                                            <Form.Select aria-label="Default select example" className={agent_dashboardStyles.addlisting_input}>
+                                                                                <option>{item.placeholder}</option>
+                                                                                <option value="1">One</option>
+                                                                                <option value="2">Two</option>
+                                                                                <option value="3">Three</option>
+                                                                            </Form.Select>
+                                                                            :
+                                                                            <Form.Control type={item.type} placeholder={item.placeholder} className={agent_dashboardStyles.addlisting_input} />
+                                                                        }
+                                                                    </Form.Group>
+                                                                </Col>
+                                                        )}
+                                                    </Row>
+                                                </Form>
+                                            </div>
+                                            <div className={agent_dashboardStyles.addlisting_container}>
+                                                <div className='mb-4'>
+                                                    <h4 className={agent_dashboardStyles.addlisting_title}>Pricing & Lease Information</h4>
+                                                </div>
+                                                <Form>
+                                                    <Row>
+                                                        {pricingFields.map((item, index) =>
+                                                            <Col lg={6} key={index}>
+                                                                <Form.Group className="mb-4" controlId="exampleForm.ControlInput1">
+                                                                    <Form.Label className={agent_dashboardStyles.addlisting_label}>{item.label}</Form.Label>
+                                                                    {item.id === 3 ?
+                                                                        <Form.Select aria-label="Default select example" className={agent_dashboardStyles.addlisting_input}>
+                                                                            <option>{item.placeholder}</option>
+                                                                            <option value="1">One</option>
+                                                                            <option value="2">Two</option>
+                                                                            <option value="3">Three</option>
+                                                                        </Form.Select>
+                                                                        :
+                                                                        <Form.Control type={item.type} placeholder={item.placeholder} className={agent_dashboardStyles.addlisting_input} />
+                                                                    }
+                                                                </Form.Group>
+                                                            </Col>
+                                                        )}
+                                                    </Row>
+                                                </Form>
+                                            </div>
+                                            <div className={agent_dashboardStyles.addlisting_container}>
+                                                <div className='mb-4'>
+                                                    <h4 className={agent_dashboardStyles.addlisting_title}>Floor Plans</h4>
+                                                </div>
+                                                <Form>
+                                                    <Row>
+                                                        {floorFields.map((item, index) =>
+                                                            <Col lg={6} key={index}>
+                                                                <Form.Group className="mb-4" controlId="exampleForm.ControlInput1">
+                                                                    <Form.Label className={agent_dashboardStyles.addlisting_label}>{item.label}</Form.Label>
+                                                                    {item.id === 2 || item.id === 4 ?
+                                                                        <Form.Select aria-label="Default select example" className={agent_dashboardStyles.addlisting_input}>
+                                                                            <option>{item.placeholder}</option>
+                                                                            <option value="1">One</option>
+                                                                            <option value="2">Two</option>
+                                                                            <option value="3">Three</option>
+                                                                        </Form.Select>
+                                                                        :
+                                                                        <Form.Control type={item.type} placeholder={item.placeholder} className={agent_dashboardStyles.addlisting_input} />
+                                                                    }
+                                                                </Form.Group>
+                                                            </Col>
+                                                        )}
+                                                    </Row>
+                                                </Form>
+                                            </div>
+                                            <div className={agent_dashboardStyles.addlisting_container}>
+                                                <div className='mb-4'>
+                                                    <h4 className={agent_dashboardStyles.addlisting_title}>Property Policies</h4>
+                                                </div>
+                                                <Form>
+                                                    <Row>
+                                                        {policiesFields.map((item, index) =>
+                                                            <Col lg={6} key={index}>
+                                                                <Form.Group className="mb-4" controlId="exampleForm.ControlInput1">
+                                                                    <Form.Label className={agent_dashboardStyles.addlisting_label}>{item.label}</Form.Label>
+                                                                    {item.id === 1 || item.id === 4 ?
+                                                                        <Form.Select aria-label="Default select example" className={agent_dashboardStyles.addlisting_input}>
+                                                                            <option>{item.placeholder}</option>
+                                                                            <option value="1">One</option>
+                                                                            <option value="2">Two</option>
+                                                                            <option value="3">Three</option>
+                                                                        </Form.Select>
+                                                                        :
+                                                                        <Form.Control type={item.type} placeholder={item.placeholder} className={agent_dashboardStyles.addlisting_input} />
+                                                                    }
+                                                                </Form.Group>
+                                                            </Col>
+                                                        )}
+                                                    </Row>
+                                                </Form>
+                                            </div>
+                                            <div className={agent_dashboardStyles.addlisting_container}>
+                                                <div className='mb-4'>
+                                                    <h4 className={agent_dashboardStyles.addlisting_title}>Utilities & Parking</h4>
+                                                </div>
+                                                <Form>
+                                                    <Row>
+                                                        {utilitiesFields.map((item, index) =>
+                                                            item.id === 1 || item.id === 2 || item.id === 3 || item.id === 4 || item.id === 5 || item.id === 6 ?
+                                                                <Col lg={2} key={index}>
+                                                                    <Form.Group className="mb-4" controlId="exampleForm.ControlInput1" id='utility-checks'>
+                                                                        <Form.Check aria-label="option 1" label={item.label} />
+                                                                    </Form.Group>
+                                                                </Col>
+                                                                :
+                                                                item.id === 9 ?
+                                                                    <Col lg={12} key={index}>
+                                                                        <Form.Group className={`${agent_dashboardStyles.option_select_container} mb-4`} controlId="exampleForm.ControlInput1">
+                                                                            <Form.Label className={agent_dashboardStyles.addlisting_label}>{item.label}</Form.Label>
+                                                                            <Form.Select aria-label="Default select example" className={agent_dashboardStyles.addlisting_input}>
+                                                                                <option>{item.placeholder}</option>
+                                                                                <option value="1">One</option>
+                                                                                <option value="2">Two</option>
+                                                                                <option value="3">Three</option>
+                                                                            </Form.Select>
+                                                                            <Button variant='dark' className={agent_dashboardStyles.option_add_btn}>
+                                                                                <span className='me-2'>
+                                                                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                                        <path d="M6.17984 0.470024C6.3786 0.470024 6.54009 0.532135 6.66431 0.656358C6.78853 0.78058 6.85064 0.942068 6.85064 1.14082V5.38922H11.099C11.2978 5.38922 11.4593 5.45134 11.5835 5.57556C11.7077 5.69978 11.7698 5.86127 11.7698 6.06002C11.7698 6.25878 11.7077 6.42027 11.5835 6.54449C11.4593 6.66871 11.2978 6.73082 11.099 6.73082H6.85064V10.9792C6.85064 11.178 6.78853 11.3395 6.66431 11.4637C6.54009 11.5879 6.3786 11.65 6.17984 11.65C5.98109 11.65 5.8196 11.5879 5.69538 11.4637C5.57116 11.3395 5.50904 11.178 5.50904 10.9792V6.73082H1.26064C1.06189 6.73082 0.900399 6.66871 0.776177 6.54449C0.651955 6.42027 0.589844 6.25878 0.589844 6.06002C0.589844 5.86127 0.651955 5.69978 0.776177 5.57556C0.900399 5.45134 1.06189 5.38922 1.26064 5.38922H5.50904V1.14082C5.50904 0.942068 5.57116 0.78058 5.69538 0.656358C5.8196 0.532135 5.98109 0.470024 6.17984 0.470024Z" fill="white" />
+                                                                                    </svg>
+                                                                                </span>
+                                                                                add more
+                                                                            </Button>
+                                                                        </Form.Group>
+                                                                    </Col>
+                                                                    :
+                                                                    <Col lg={6} key={index}>
+                                                                        <Form.Group className="mb-4" controlId="exampleForm.ControlInput1">
+                                                                            <Form.Label className={agent_dashboardStyles.addlisting_label}>{item.label}</Form.Label>
+                                                                            {item.id === 7 || item.id === 9 ?
+                                                                                <Form.Select aria-label="Default select example" className={agent_dashboardStyles.addlisting_input}>
+                                                                                    <option>{item.placeholder}</option>
+                                                                                    <option value="1">One</option>
+                                                                                    <option value="2">Two</option>
+                                                                                    <option value="3">Three</option>
+                                                                                </Form.Select>
+                                                                                :
+                                                                                <Form.Control type={item.type} placeholder={item.placeholder} className={agent_dashboardStyles.addlisting_input} />
+                                                                            }
+                                                                        </Form.Group>
+                                                                    </Col>
+                                                        )}
+                                                    </Row>
+                                                </Form>
+                                            </div>
+                                            <div className={agent_dashboardStyles.addlisting_container}>
+                                                <div className='mb-4'>
+                                                    <h4 className={agent_dashboardStyles.addlisting_title}>Select Amenities</h4>
+                                                </div>
+                                                <Form>
+                                                    <div className={agent_dashboardStyles.amenities_grid_container}>
+                                                        {amenitiesFields.map((item, index) =>
+                                                            <div key={index}>
+                                                                <Form.Group className="mb-4" controlId="exampleForm.ControlInput1" id='utility-checks'>
+                                                                    <Form.Check aria-label="option 1" label={item.label} />
+                                                                </Form.Group>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                    <Button variant='dark' className={agent_dashboardStyles.option_add_btn}>
+                                                        <span className='me-2'>
+                                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M6.17984 0.470024C6.3786 0.470024 6.54009 0.532135 6.66431 0.656358C6.78853 0.78058 6.85064 0.942068 6.85064 1.14082V5.38922H11.099C11.2978 5.38922 11.4593 5.45134 11.5835 5.57556C11.7077 5.69978 11.7698 5.86127 11.7698 6.06002C11.7698 6.25878 11.7077 6.42027 11.5835 6.54449C11.4593 6.66871 11.2978 6.73082 11.099 6.73082H6.85064V10.9792C6.85064 11.178 6.78853 11.3395 6.66431 11.4637C6.54009 11.5879 6.3786 11.65 6.17984 11.65C5.98109 11.65 5.8196 11.5879 5.69538 11.4637C5.57116 11.3395 5.50904 11.178 5.50904 10.9792V6.73082H1.26064C1.06189 6.73082 0.900399 6.66871 0.776177 6.54449C0.651955 6.42027 0.589844 6.25878 0.589844 6.06002C0.589844 5.86127 0.651955 5.69978 0.776177 5.57556C0.900399 5.45134 1.06189 5.38922 1.26064 5.38922H5.50904V1.14082C5.50904 0.942068 5.57116 0.78058 5.69538 0.656358C5.8196 0.532135 5.98109 0.470024 6.17984 0.470024Z" fill="white" />
+                                                            </svg>
+                                                        </span>
+                                                        add more
+                                                    </Button>
+                                                </Form>
+                                            </div>
+                                            <div className={agent_dashboardStyles.addlisting_container}>
+                                                <div className='mb-4'>
+                                                    <h4 className={agent_dashboardStyles.addlisting_title}>Photo & Video Attachment</h4>
+                                                </div>
+                                                <input
+                                                    type="file"
+                                                    ref={fileInputRef}
+                                                    style={{ display: 'none' }}
+                                                    onChange={handleFileChange}
+                                                    multiple
+                                                />
+                                                {selectedFiles.length > 0 && (
+                                                    <div>
+                                                        <p className={agent_dashboardStyles.file_subtitle}>File Attachment*</p>
+                                                        <ul className='list-unstyled'>
+                                                            {selectedFiles.map((file, index) => (
+                                                                <li key={index} className={`${agent_dashboardStyles.file_list_item} d-flex justify-content-between`}>
+                                                                    {file.name}{' '}
+                                                                    <CloseButton onClick={() => handleRemoveFile(index)} />
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                )}
+                                                <div className='d-flex align-items-center'>
+                                                    <Button variant='dark' className={agent_dashboardStyles.option_add_btn} onClick={handleButtonClick}>
+                                                        <span className='me-2'>
+                                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M6.17984 0.470024C6.3786 0.470024 6.54009 0.532135 6.66431 0.656358C6.78853 0.78058 6.85064 0.942068 6.85064 1.14082V5.38922H11.099C11.2978 5.38922 11.4593 5.45134 11.5835 5.57556C11.7077 5.69978 11.7698 5.86127 11.7698 6.06002C11.7698 6.25878 11.7077 6.42027 11.5835 6.54449C11.4593 6.66871 11.2978 6.73082 11.099 6.73082H6.85064V10.9792C6.85064 11.178 6.78853 11.3395 6.66431 11.4637C6.54009 11.5879 6.3786 11.65 6.17984 11.65C5.98109 11.65 5.8196 11.5879 5.69538 11.4637C5.57116 11.3395 5.50904 11.178 5.50904 10.9792V6.73082H1.26064C1.06189 6.73082 0.900399 6.66871 0.776177 6.54449C0.651955 6.42027 0.589844 6.25878 0.589844 6.06002C0.589844 5.86127 0.651955 5.69978 0.776177 5.57556C0.900399 5.45134 1.06189 5.38922 1.26064 5.38922H5.50904V1.14082C5.50904 0.942068 5.57116 0.78058 5.69538 0.656358C5.8196 0.532135 5.98109 0.470024 6.17984 0.470024Z" fill="white" />
+                                                            </svg>
+                                                        </span>
+                                                        Upload File
+                                                    </Button>
+                                                    <span className={`${agent_dashboardStyles.file_type_text} ms-3 pt-3`}>Upload file .jpg, .png, .mp4</span>
+                                                </div>
+                                            </div>
+                                            <div className={agent_dashboardStyles.addlisting_container}>
+                                                <div className='mb-4'>
+                                                    <h4 className={agent_dashboardStyles.addlisting_title}>Attach 3d Plans</h4>
+                                                </div>
+                                                <input
+                                                    type="file"
+                                                    ref={fileInputRef1}
+                                                    style={{ display: 'none' }}
+                                                    onChange={handleFileChange1}
+                                                    multiple
+                                                />
+                                                {selectedFiles1.length > 0 && (
+                                                    <div>
+                                                        <p className={agent_dashboardStyles.file_subtitle}>File Attachment*</p>
+                                                        <ul className='list-unstyled'>
+                                                            {selectedFiles1.map((file, index) => (
+                                                                <li key={index} className={`${agent_dashboardStyles.file_list_item} d-flex justify-content-between`}>
+                                                                    {file.name}{' '}
+                                                                    <CloseButton onClick={() => handleRemoveFile1(index)} />
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                )}
+                                                <div className='d-flex align-items-center'>
+                                                    <Button variant='dark' className={agent_dashboardStyles.option_add_btn} onClick={handleButtonClick1}>
+                                                        <span className='me-2'>
+                                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M6.17984 0.470024C6.3786 0.470024 6.54009 0.532135 6.66431 0.656358C6.78853 0.78058 6.85064 0.942068 6.85064 1.14082V5.38922H11.099C11.2978 5.38922 11.4593 5.45134 11.5835 5.57556C11.7077 5.69978 11.7698 5.86127 11.7698 6.06002C11.7698 6.25878 11.7077 6.42027 11.5835 6.54449C11.4593 6.66871 11.2978 6.73082 11.099 6.73082H6.85064V10.9792C6.85064 11.178 6.78853 11.3395 6.66431 11.4637C6.54009 11.5879 6.3786 11.65 6.17984 11.65C5.98109 11.65 5.8196 11.5879 5.69538 11.4637C5.57116 11.3395 5.50904 11.178 5.50904 10.9792V6.73082H1.26064C1.06189 6.73082 0.900399 6.66871 0.776177 6.54449C0.651955 6.42027 0.589844 6.25878 0.589844 6.06002C0.589844 5.86127 0.651955 5.69978 0.776177 5.57556C0.900399 5.45134 1.06189 5.38922 1.26064 5.38922H5.50904V1.14082C5.50904 0.942068 5.57116 0.78058 5.69538 0.656358C5.8196 0.532135 5.98109 0.470024 6.17984 0.470024Z" fill="white" />
+                                                            </svg>
+                                                        </span>
+                                                        Upload File
+                                                    </Button>
+                                                    <span className={`${agent_dashboardStyles.file_type_text} ms-3 pt-3`}>Upload file .mp4, .mov</span>
+                                                </div>
+                                            </div>
+                                            <div className={agent_dashboardStyles.addlisting_container}>
+                                                <div className='mb-4'>
+                                                    <h4 className={agent_dashboardStyles.addlisting_title}>Address & Location</h4>
+                                                </div>
+                                                <Form>
+                                                    <Row>
+                                                        {addressFields.map((item, index) =>
+                                                            item.id === 1 || item.id === 5 ?
+                                                                <Col lg={12} key={index}>
+                                                                    <Form.Group className="mb-4" controlId="exampleForm.ControlTextarea1">
+                                                                        <Form.Label className={agent_dashboardStyles.addlisting_label}>{item.label}</Form.Label>
+                                                                        <Form.Control placeholder={item.placeholder} className={agent_dashboardStyles.addlisting_input} onChange={(e) => setLocationSearch(e.target.value)} />
+                                                                    </Form.Group>
+                                                                </Col>
+                                                                :
+                                                                <Col lg={4} key={index}>
+                                                                    <Form.Group className="mb-4" controlId="exampleForm.ControlTextarea1">
+                                                                        <Form.Label className={agent_dashboardStyles.addlisting_label}>{item.label}</Form.Label>
+                                                                        <Form.Select aria-label="Default select example" className={agent_dashboardStyles.addlisting_input}>
+                                                                            <option>{item.placeholder}</option>
+                                                                            <option value="1">One</option>
+                                                                            <option value="2">Two</option>
+                                                                            <option value="3">Three</option>
+                                                                        </Form.Select>
+                                                                    </Form.Group>
+                                                                </Col>
+                                                        )}
+                                                    </Row>
+                                                </Form>
+                                                <div>
+                                                    <LocationSearch locationSearch={locationSearch} />
+                                                </div>
+                                            </div>
+                                            <div className='d-flex align-items-center justify-content-end'>
+                                                <div className='me-4'>
+                                                    <a href="#" className={agent_dashboardStyles.cancel_link}>Cancel</a>
+                                                </div>
+                                                <div>
+                                                    <Button variant='danger' className={agent_dashboardStyles.submit_listing_btn}>Submit Property</Button>
                                                 </div>
                                             </div>
                                         </Tab.Pane>

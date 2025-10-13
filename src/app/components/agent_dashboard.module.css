@@ -228,6 +228,92 @@
     font-weight: 500;
 }
 
+.addlisting_container {
+    background: #FFFFFF;
+    padding: 45px 60px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.addlisting_input {
+    border-radius: 8px;
+    padding: 17px 21px;
+    border: 1px solid #E5E5E5;
+    font-size: 15px;
+}
+
+.addlisting_input::placeholder {
+    color: #757575;
+}
+
+.addlisting_label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.addlisting_title {
+    font-size: clamp(18px, 5vw, 23px);
+    color: #000000;
+    font-weight: 500;
+}
+
+.option_select_container {
+    border: 1px solid #BDB9B9;
+    padding: 18px;
+    border-radius: 14px;
+}
+
+.option_add_btn {
+    background-color: #000000;
+    border-radius: 7px;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.amenities_grid_container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.file_list_item {
+    background: #EDF2F7;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 14px;
+    color: #000000B2;
+    margin-bottom: 10px;
+}
+
+.file_type_text {
+    font-size: 14px;
+    color: #000000B2;
+}
+
+.file_subtitle {
+    font-size: 15px;
+    color: #000000;
+    font-weight: 500;
+}
+
+.cancel_link {
+    font-weight: 500;
+    font-size: 16px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.submit_listing_btn {
+    background: #ED1C24;
+    padding: 10px 25px;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
 @media(max-width:768px) {
     .stats_container {
         display: grid !important;
@@ -236,6 +322,12 @@
         border-radius: 20px;
         background-color: #fff;
         padding: 20px;
+    }
+
+    .amenities_grid_container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
     }
 }
 
@@ -252,11 +344,18 @@
     .support_container,
     .support_text_container,
     .file_container,
-    .custom_editor_container {
+    .custom_editor_container,
+    .addlisting_container {
         padding: 5px;
     }
 
     .custom_editor_container {
         margin: 5px;
+    }
+
+    .amenities_grid_container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
     }
 }

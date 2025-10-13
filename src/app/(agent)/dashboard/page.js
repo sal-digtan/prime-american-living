@@ -1,10 +1,18 @@
-import React from 'react'
+'use client';
+
+import React, { useState } from 'react'
 import AgentDashboard from '@/app/components/agent_dashboard';
+import { LocationContext } from '@/app/context/LocationContext';
 
 const page = () => {
+
+    const [locationSearch, setLocationSearch] = useState('3911 Firestone Blvd, South Gate, CA 90280, United States')
+
     return (
         <div>
-            <AgentDashboard />
+            <LocationContext.Provider value={{ locationSearch, setLocationSearch }}>
+                <AgentDashboard />
+            </LocationContext.Provider>
         </div>
     )
 }
