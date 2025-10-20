@@ -123,6 +123,18 @@ input[type="date"] {
   border-bottom-left-radius: 50% !important;
 }
 
+#properties-pagination .active .page-link {
+  background-color: #000 !important;
+  color: #fff !important;
+  border: 0;
+}
+
+#properties-pagination .page-link {
+  background-color: #fff !important;
+  color: #000 !important;
+  border: 0;
+}
+
 /* pagination css */
 
 .radio-buttons input[type="radio"] {
@@ -208,9 +220,17 @@ input[type="date"] {
   background-color: #2665B0;
 }
 
-#video-modal .modal-content {
+#video-modal .modal-content,
+#boosting-modal .modal-content {
   background: transparent !important;
   border: 0 !important;
+}
+
+@media (min-width: 992px) {
+
+  #boosting-modal {
+    --bs-modal-width: 900px;
+  }
 }
 
 @media(max-width: 600px) {

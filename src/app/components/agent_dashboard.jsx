@@ -16,6 +16,19 @@ import dynamic from 'next/dynamic';
 import Form from 'react-bootstrap/Form';
 import CloseButton from 'react-bootstrap/CloseButton';
 import { LocationContext } from '@/app/context/LocationContext';
+import formImg1 from '../../../public/listings-form-img1.png';
+import formImg2 from '../../../public/listings-form-img2.png';
+import Card from 'react-bootstrap/Card';
+import Pagination from 'react-bootstrap/Pagination';
+import boostingImg1 from '../../../public/boosting-img1.png';
+import boostingImg2 from '../../../public/boosting-img2.png';
+import boostingImg3 from '../../../public/boosting-img3.png';
+import boostingImg4 from '../../../public/boosting-img4.png';
+import boostingImg5 from '../../../public/boosting-img5.png';
+import boostingImg6 from '../../../public/boosting-img6.png';
+import Table from 'react-bootstrap/Table';
+import Modal from 'react-bootstrap/Modal';
+import profileImg from '../../../public/profile-img.png';
 
 const Chart = dynamic(() => import('../components/Chart'), {
     ssr: false,
@@ -614,6 +627,712 @@ const agent_dashboard = () => {
 
     console.log(locationSearch);
 
+    const listingsData = [
+        {
+            id: 1,
+            title: 'Serendipity Gardens',
+            address: '60, Jln 6D, NP 27570',
+            img: formImg1,
+            amenities: [
+                {
+                    area: '2500 Sq',
+                    icon: `<svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1_298)">
+    <path d="M13.9478 6.70054H14.4878V3.55054H11.3378V4.09054H13.5878L4.04781 13.6305V11.3805H3.50781V14.5305H6.65781V13.9905H4.40781L13.9478 4.45054V6.70054Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M0.898438 6.43067H1.43844V1.48067H6.38844V0.940674H0.898438V6.43067Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M17.0994 0.940674H11.6094V1.48067H16.5594V6.43067H17.0994V0.940674Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M17.0994 11.6506H16.5594V16.6006H11.6094V17.1406H17.0994V11.6506Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M0.898438 17.1406H6.38844V16.6006H1.43844V11.6506H0.898438V17.1406Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_1_298">
+    <rect width="18" height="18" fill="white" transform="translate(0 0.0407715)"/>
+    </clipPath>
+    </defs>
+    </svg>
+    `},
+                {
+                    beds: '2 Beds',
+                    icon: `<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1_309)">
+    <path d="M16.9665 12.8862V16.4044H14.5937V14.6044H3.46648V16.4044H1.09375V12.8862" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3.54688 1.67725H14.5105" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.5156 1.67725C15.0884 1.67725 15.5793 2.16816 15.5793 2.74088" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15.5781 2.74072V7.32254" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.1862 7.15867V6.42231C14.1862 5.76776 13.6135 5.27686 13.0408 5.27686H10.3408C9.68622 5.27686 9.19531 5.84958 9.19531 6.42231V6.91322" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.94773 6.91322V6.42231C8.94773 5.76776 8.375 5.27686 7.80227 5.27686H5.10227C4.44773 5.27686 3.875 5.76776 3.875 6.42231V7.07686" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.48438 7.32254V2.74072" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.48438 2.74088C2.48438 2.16816 2.97528 1.67725 3.54801 1.67725" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.48466 7.6497C6.65739 6.99516 13.0392 7.07698 15.6574 7.6497L17.0483 12.6406H1.09375L2.48466 7.6497Z" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_1_309">
+    <rect width="18" height="16.3636" fill="white" transform="translate(0.03125 0.858887)"/>
+    </clipPath>
+    </defs>
+    </svg>`
+
+                },
+                {
+                    baths: '4 Baths',
+                    icon: `<svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1_324)">
+    <path d="M2.07031 10.8406C2.07031 13.7206 3.33031 16.1506 5.94031 16.1506H12.0603C14.7603 16.1506 15.9303 13.7206 15.9303 10.8406" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.9181 10.7507H1.07812" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.6728 17.1406L14.1328 16.1506" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3.32812 17.1406L3.86813 16.1506" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6.20625 2.92067C6.20625 1.84067 5.21625 0.940674 4.13625 0.940674C3.05625 0.940674 2.15625 1.84067 2.15625 2.92067V10.1207" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.73175 4.18091C8.37175 3.28091 7.56175 2.74091 6.93175 3.01091L5.67175 3.37091C5.04175 3.64091 4.77175 4.63091 5.04175 5.53091" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M4.5 5.80082L9.18 4.09082M11.61 15.1608C13.41 15.1608 14.4 13.8108 14.67 12.1008" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_1_324">
+    <rect width="18" height="18" fill="white" transform="translate(0 0.0407715)"/>
+    </clipPath>
+    </defs>
+    </svg>`
+                }
+            ],
+            price: '$166,000'
+        },
+        {
+            id: 2,
+            title: 'Panorama Place',
+            address: 'Pál útja ,25, HU 0321',
+            img: formImg2,
+            amenities: [
+                {
+                    area: '2598 Sq',
+                    icon: `<svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1_298)">
+    <path d="M13.9478 6.70054H14.4878V3.55054H11.3378V4.09054H13.5878L4.04781 13.6305V11.3805H3.50781V14.5305H6.65781V13.9905H4.40781L13.9478 4.45054V6.70054Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M0.898438 6.43067H1.43844V1.48067H6.38844V0.940674H0.898438V6.43067Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M17.0994 0.940674H11.6094V1.48067H16.5594V6.43067H17.0994V0.940674Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M17.0994 11.6506H16.5594V16.6006H11.6094V17.1406H17.0994V11.6506Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M0.898438 17.1406H6.38844V16.6006H1.43844V11.6506H0.898438V17.1406Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_1_298">
+    <rect width="18" height="18" fill="white" transform="translate(0 0.0407715)"/>
+    </clipPath>
+    </defs>
+    </svg>
+    `},
+                {
+                    beds: '3 Beds',
+                    icon: `<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1_309)">
+    <path d="M16.9665 12.8862V16.4044H14.5937V14.6044H3.46648V16.4044H1.09375V12.8862" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3.54688 1.67725H14.5105" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.5156 1.67725C15.0884 1.67725 15.5793 2.16816 15.5793 2.74088" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15.5781 2.74072V7.32254" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.1862 7.15867V6.42231C14.1862 5.76776 13.6135 5.27686 13.0408 5.27686H10.3408C9.68622 5.27686 9.19531 5.84958 9.19531 6.42231V6.91322" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.94773 6.91322V6.42231C8.94773 5.76776 8.375 5.27686 7.80227 5.27686H5.10227C4.44773 5.27686 3.875 5.76776 3.875 6.42231V7.07686" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.48438 7.32254V2.74072" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.48438 2.74088C2.48438 2.16816 2.97528 1.67725 3.54801 1.67725" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.48466 7.6497C6.65739 6.99516 13.0392 7.07698 15.6574 7.6497L17.0483 12.6406H1.09375L2.48466 7.6497Z" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_1_309">
+    <rect width="18" height="16.3636" fill="white" transform="translate(0.03125 0.858887)"/>
+    </clipPath>
+    </defs>
+    </svg>`
+
+                },
+                {
+                    baths: '4 Baths',
+                    icon: `<svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1_324)">
+    <path d="M2.07031 10.8406C2.07031 13.7206 3.33031 16.1506 5.94031 16.1506H12.0603C14.7603 16.1506 15.9303 13.7206 15.9303 10.8406" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.9181 10.7507H1.07812" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.6728 17.1406L14.1328 16.1506" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3.32812 17.1406L3.86813 16.1506" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6.20625 2.92067C6.20625 1.84067 5.21625 0.940674 4.13625 0.940674C3.05625 0.940674 2.15625 1.84067 2.15625 2.92067V10.1207" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.73175 4.18091C8.37175 3.28091 7.56175 2.74091 6.93175 3.01091L5.67175 3.37091C5.04175 3.64091 4.77175 4.63091 5.04175 5.53091" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M4.5 5.80082L9.18 4.09082M11.61 15.1608C13.41 15.1608 14.4 13.8108 14.67 12.1008" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_1_324">
+    <rect width="18" height="18" fill="white" transform="translate(0 0.0407715)"/>
+    </clipPath>
+    </defs>
+    </svg>`
+                }
+            ],
+            price: '$128,000'
+        },
+        {
+            id: 3,
+            title: 'Serendipity Gardens',
+            address: '60, Jln 6D, NP 27570',
+            img: formImg1,
+            amenities: [
+                {
+                    area: '2500 Sq',
+                    icon: `<svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1_298)">
+    <path d="M13.9478 6.70054H14.4878V3.55054H11.3378V4.09054H13.5878L4.04781 13.6305V11.3805H3.50781V14.5305H6.65781V13.9905H4.40781L13.9478 4.45054V6.70054Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M0.898438 6.43067H1.43844V1.48067H6.38844V0.940674H0.898438V6.43067Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M17.0994 0.940674H11.6094V1.48067H16.5594V6.43067H17.0994V0.940674Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M17.0994 11.6506H16.5594V16.6006H11.6094V17.1406H17.0994V11.6506Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M0.898438 17.1406H6.38844V16.6006H1.43844V11.6506H0.898438V17.1406Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_1_298">
+    <rect width="18" height="18" fill="white" transform="translate(0 0.0407715)"/>
+    </clipPath>
+    </defs>
+    </svg>
+    `},
+                {
+                    beds: '2 Beds',
+                    icon: `<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1_309)">
+    <path d="M16.9665 12.8862V16.4044H14.5937V14.6044H3.46648V16.4044H1.09375V12.8862" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3.54688 1.67725H14.5105" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.5156 1.67725C15.0884 1.67725 15.5793 2.16816 15.5793 2.74088" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15.5781 2.74072V7.32254" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.1862 7.15867V6.42231C14.1862 5.76776 13.6135 5.27686 13.0408 5.27686H10.3408C9.68622 5.27686 9.19531 5.84958 9.19531 6.42231V6.91322" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.94773 6.91322V6.42231C8.94773 5.76776 8.375 5.27686 7.80227 5.27686H5.10227C4.44773 5.27686 3.875 5.76776 3.875 6.42231V7.07686" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.48438 7.32254V2.74072" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.48438 2.74088C2.48438 2.16816 2.97528 1.67725 3.54801 1.67725" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.48466 7.6497C6.65739 6.99516 13.0392 7.07698 15.6574 7.6497L17.0483 12.6406H1.09375L2.48466 7.6497Z" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_1_309">
+    <rect width="18" height="16.3636" fill="white" transform="translate(0.03125 0.858887)"/>
+    </clipPath>
+    </defs>
+    </svg>`
+
+                },
+                {
+                    baths: '4 Baths',
+                    icon: `<svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1_324)">
+    <path d="M2.07031 10.8406C2.07031 13.7206 3.33031 16.1506 5.94031 16.1506H12.0603C14.7603 16.1506 15.9303 13.7206 15.9303 10.8406" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.9181 10.7507H1.07812" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.6728 17.1406L14.1328 16.1506" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3.32812 17.1406L3.86813 16.1506" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6.20625 2.92067C6.20625 1.84067 5.21625 0.940674 4.13625 0.940674C3.05625 0.940674 2.15625 1.84067 2.15625 2.92067V10.1207" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.73175 4.18091C8.37175 3.28091 7.56175 2.74091 6.93175 3.01091L5.67175 3.37091C5.04175 3.64091 4.77175 4.63091 5.04175 5.53091" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M4.5 5.80082L9.18 4.09082M11.61 15.1608C13.41 15.1608 14.4 13.8108 14.67 12.1008" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_1_324">
+    <rect width="18" height="18" fill="white" transform="translate(0 0.0407715)"/>
+    </clipPath>
+    </defs>
+    </svg>`
+                }
+            ],
+            price: '$166,000'
+        },
+        {
+            id: 4,
+            title: 'Panorama Place',
+            address: 'Pál útja ,25, HU 0321',
+            img: formImg2,
+            amenities: [
+                {
+                    area: '2598 Sq',
+                    icon: `<svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1_298)">
+    <path d="M13.9478 6.70054H14.4878V3.55054H11.3378V4.09054H13.5878L4.04781 13.6305V11.3805H3.50781V14.5305H6.65781V13.9905H4.40781L13.9478 4.45054V6.70054Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M0.898438 6.43067H1.43844V1.48067H6.38844V0.940674H0.898438V6.43067Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M17.0994 0.940674H11.6094V1.48067H16.5594V6.43067H17.0994V0.940674Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M17.0994 11.6506H16.5594V16.6006H11.6094V17.1406H17.0994V11.6506Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M0.898438 17.1406H6.38844V16.6006H1.43844V11.6506H0.898438V17.1406Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_1_298">
+    <rect width="18" height="18" fill="white" transform="translate(0 0.0407715)"/>
+    </clipPath>
+    </defs>
+    </svg>
+    `},
+                {
+                    beds: '3 Beds',
+                    icon: `<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1_309)">
+    <path d="M16.9665 12.8862V16.4044H14.5937V14.6044H3.46648V16.4044H1.09375V12.8862" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3.54688 1.67725H14.5105" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.5156 1.67725C15.0884 1.67725 15.5793 2.16816 15.5793 2.74088" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15.5781 2.74072V7.32254" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.1862 7.15867V6.42231C14.1862 5.76776 13.6135 5.27686 13.0408 5.27686H10.3408C9.68622 5.27686 9.19531 5.84958 9.19531 6.42231V6.91322" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.94773 6.91322V6.42231C8.94773 5.76776 8.375 5.27686 7.80227 5.27686H5.10227C4.44773 5.27686 3.875 5.76776 3.875 6.42231V7.07686" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.48438 7.32254V2.74072" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.48438 2.74088C2.48438 2.16816 2.97528 1.67725 3.54801 1.67725" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.48466 7.6497C6.65739 6.99516 13.0392 7.07698 15.6574 7.6497L17.0483 12.6406H1.09375L2.48466 7.6497Z" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_1_309">
+    <rect width="18" height="16.3636" fill="white" transform="translate(0.03125 0.858887)"/>
+    </clipPath>
+    </defs>
+    </svg>`
+
+                },
+                {
+                    baths: '4 Baths',
+                    icon: `<svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1_324)">
+    <path d="M2.07031 10.8406C2.07031 13.7206 3.33031 16.1506 5.94031 16.1506H12.0603C14.7603 16.1506 15.9303 13.7206 15.9303 10.8406" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.9181 10.7507H1.07812" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.6728 17.1406L14.1328 16.1506" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3.32812 17.1406L3.86813 16.1506" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6.20625 2.92067C6.20625 1.84067 5.21625 0.940674 4.13625 0.940674C3.05625 0.940674 2.15625 1.84067 2.15625 2.92067V10.1207" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.73175 4.18091C8.37175 3.28091 7.56175 2.74091 6.93175 3.01091L5.67175 3.37091C5.04175 3.64091 4.77175 4.63091 5.04175 5.53091" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M4.5 5.80082L9.18 4.09082M11.61 15.1608C13.41 15.1608 14.4 13.8108 14.67 12.1008" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_1_324">
+    <rect width="18" height="18" fill="white" transform="translate(0 0.0407715)"/>
+    </clipPath>
+    </defs>
+    </svg>`
+                }
+            ],
+            price: '$128,000'
+        },
+        {
+            id: 5,
+            title: 'Panorama Place',
+            address: 'Pál útja ,25, HU 0321',
+            img: formImg2,
+            amenities: [
+                {
+                    area: '2598 Sq',
+                    icon: `<svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1_298)">
+    <path d="M13.9478 6.70054H14.4878V3.55054H11.3378V4.09054H13.5878L4.04781 13.6305V11.3805H3.50781V14.5305H6.65781V13.9905H4.40781L13.9478 4.45054V6.70054Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M0.898438 6.43067H1.43844V1.48067H6.38844V0.940674H0.898438V6.43067Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M17.0994 0.940674H11.6094V1.48067H16.5594V6.43067H17.0994V0.940674Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M17.0994 11.6506H16.5594V16.6006H11.6094V17.1406H17.0994V11.6506Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M0.898438 17.1406H6.38844V16.6006H1.43844V11.6506H0.898438V17.1406Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_1_298">
+    <rect width="18" height="18" fill="white" transform="translate(0 0.0407715)"/>
+    </clipPath>
+    </defs>
+    </svg>
+    `},
+                {
+                    beds: '3 Beds',
+                    icon: `<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1_309)">
+    <path d="M16.9665 12.8862V16.4044H14.5937V14.6044H3.46648V16.4044H1.09375V12.8862" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3.54688 1.67725H14.5105" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.5156 1.67725C15.0884 1.67725 15.5793 2.16816 15.5793 2.74088" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15.5781 2.74072V7.32254" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.1862 7.15867V6.42231C14.1862 5.76776 13.6135 5.27686 13.0408 5.27686H10.3408C9.68622 5.27686 9.19531 5.84958 9.19531 6.42231V6.91322" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.94773 6.91322V6.42231C8.94773 5.76776 8.375 5.27686 7.80227 5.27686H5.10227C4.44773 5.27686 3.875 5.76776 3.875 6.42231V7.07686" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.48438 7.32254V2.74072" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.48438 2.74088C2.48438 2.16816 2.97528 1.67725 3.54801 1.67725" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.48466 7.6497C6.65739 6.99516 13.0392 7.07698 15.6574 7.6497L17.0483 12.6406H1.09375L2.48466 7.6497Z" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_1_309">
+    <rect width="18" height="16.3636" fill="white" transform="translate(0.03125 0.858887)"/>
+    </clipPath>
+    </defs>
+    </svg>`
+
+                },
+                {
+                    baths: '4 Baths',
+                    icon: `<svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1_324)">
+    <path d="M2.07031 10.8406C2.07031 13.7206 3.33031 16.1506 5.94031 16.1506H12.0603C14.7603 16.1506 15.9303 13.7206 15.9303 10.8406" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.9181 10.7507H1.07812" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.6728 17.1406L14.1328 16.1506" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3.32812 17.1406L3.86813 16.1506" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6.20625 2.92067C6.20625 1.84067 5.21625 0.940674 4.13625 0.940674C3.05625 0.940674 2.15625 1.84067 2.15625 2.92067V10.1207" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.73175 4.18091C8.37175 3.28091 7.56175 2.74091 6.93175 3.01091L5.67175 3.37091C5.04175 3.64091 4.77175 4.63091 5.04175 5.53091" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M4.5 5.80082L9.18 4.09082M11.61 15.1608C13.41 15.1608 14.4 13.8108 14.67 12.1008" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_1_324">
+    <rect width="18" height="18" fill="white" transform="translate(0 0.0407715)"/>
+    </clipPath>
+    </defs>
+    </svg>`
+                }
+            ],
+            price: '$128,000'
+        },
+        {
+            id: 6,
+            title: 'Panorama Place',
+            address: 'Pál útja ,25, HU 0321',
+            img: formImg2,
+            amenities: [
+                {
+                    area: '2598 Sq',
+                    icon: `<svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1_298)">
+    <path d="M13.9478 6.70054H14.4878V3.55054H11.3378V4.09054H13.5878L4.04781 13.6305V11.3805H3.50781V14.5305H6.65781V13.9905H4.40781L13.9478 4.45054V6.70054Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M0.898438 6.43067H1.43844V1.48067H6.38844V0.940674H0.898438V6.43067Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M17.0994 0.940674H11.6094V1.48067H16.5594V6.43067H17.0994V0.940674Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M17.0994 11.6506H16.5594V16.6006H11.6094V17.1406H17.0994V11.6506Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    <path d="M0.898438 17.1406H6.38844V16.6006H1.43844V11.6506H0.898438V17.1406Z" fill="#0D263C" stroke="#0D263C" stroke-width="0.9"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_1_298">
+    <rect width="18" height="18" fill="white" transform="translate(0 0.0407715)"/>
+    </clipPath>
+    </defs>
+    </svg>
+    `},
+                {
+                    beds: '3 Beds',
+                    icon: `<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1_309)">
+    <path d="M16.9665 12.8862V16.4044H14.5937V14.6044H3.46648V16.4044H1.09375V12.8862" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3.54688 1.67725H14.5105" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.5156 1.67725C15.0884 1.67725 15.5793 2.16816 15.5793 2.74088" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15.5781 2.74072V7.32254" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.1862 7.15867V6.42231C14.1862 5.76776 13.6135 5.27686 13.0408 5.27686H10.3408C9.68622 5.27686 9.19531 5.84958 9.19531 6.42231V6.91322" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.94773 6.91322V6.42231C8.94773 5.76776 8.375 5.27686 7.80227 5.27686H5.10227C4.44773 5.27686 3.875 5.76776 3.875 6.42231V7.07686" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.48438 7.32254V2.74072" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.48438 2.74088C2.48438 2.16816 2.97528 1.67725 3.54801 1.67725" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.48466 7.6497C6.65739 6.99516 13.0392 7.07698 15.6574 7.6497L17.0483 12.6406H1.09375L2.48466 7.6497Z" stroke="#0D263C" stroke-width="1.22727" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_1_309">
+    <rect width="18" height="16.3636" fill="white" transform="translate(0.03125 0.858887)"/>
+    </clipPath>
+    </defs>
+    </svg>`
+
+                },
+                {
+                    baths: '4 Baths',
+                    icon: `<svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1_324)">
+    <path d="M2.07031 10.8406C2.07031 13.7206 3.33031 16.1506 5.94031 16.1506H12.0603C14.7603 16.1506 15.9303 13.7206 15.9303 10.8406" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.9181 10.7507H1.07812" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.6728 17.1406L14.1328 16.1506" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3.32812 17.1406L3.86813 16.1506" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6.20625 2.92067C6.20625 1.84067 5.21625 0.940674 4.13625 0.940674C3.05625 0.940674 2.15625 1.84067 2.15625 2.92067V10.1207" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.73175 4.18091C8.37175 3.28091 7.56175 2.74091 6.93175 3.01091L5.67175 3.37091C5.04175 3.64091 4.77175 4.63091 5.04175 5.53091" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M4.5 5.80082L9.18 4.09082M11.61 15.1608C13.41 15.1608 14.4 13.8108 14.67 12.1008" stroke="#0D263C" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_1_324">
+    <rect width="18" height="18" fill="white" transform="translate(0 0.0407715)"/>
+    </clipPath>
+    </defs>
+    </svg>`
+                }
+            ],
+            price: '$128,000'
+        },
+
+    ]
+
+    const [active, setActive] = useState(1)
+    // let active = 1;
+    let items = [];
+    for (let number = 1; number <= 5; number++) {
+        items.push(
+            <Pagination.Item key={number} onClick={() => setActive(number)} active={number === active} className='me-3'>
+                {number === 5 ? <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                    <path fillRule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8" fill={active === number ? '#fff' : '#000'} />
+                </svg>
+                    : number}
+            </Pagination.Item>,
+        );
+    }
+
+    const boostingData = [
+        {
+            id: 1,
+            title: 'Listing Name',
+            img: boostingImg1,
+            listing_name: 'Panorama Place',
+            views: '3890',
+            reach: '+16.24 %',
+            spent: '$49.95',
+            status: 'INACTIVE',
+            action: 'Boost +',
+            icon: `<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1.16986 8.7561C0.826233 8.40601 0.826233 7.84497 1.16986 7.49512L6.73785 1.87817H3.56488C3.07208 1.87817 2.67279 1.47852 2.67279 0.98584C2.67279 0.493164 3.0722 0.0935059 3.56494 0.0932617H8.8739C8.96558 0.0930176 9.05664 0.107178 9.14392 0.135254H9.15094H9.15991C9.2879 0.178955 9.40399 0.251953 9.4989 0.348145C9.55841 0.407471 9.60919 0.474854 9.6499 0.54834V0.556152V0.563232C9.71594 0.690918 9.75024 0.832764 9.74988 0.976318V6.33032C9.74988 6.64648 9.58118 6.93872 9.30737 7.09668C9.03357 7.25488 8.69617 7.25488 8.42236 7.09668C8.14856 6.93872 7.97986 6.64648 7.97986 6.33032V3.13037L2.41187 8.74634C2.24658 8.91357 2.02136 9.00732 1.78638 9.00732C1.55139 9.00732 1.32617 8.91357 1.16089 8.74634L1.16986 8.7561Z" fill="#1AD598"/>
+</svg>`
+        },
+        {
+            id: 2,
+            title: 'Views',
+            img: boostingImg2,
+            listing_name: 'Panorama Place',
+            views: '4785',
+            reach: '+19.33 %',
+            spent: '$59.95',
+            status: 'ACTIVE',
+            action: 'Boost +',
+            icon: `<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1.16986 8.7561C0.826233 8.40601 0.826233 7.84497 1.16986 7.49512L6.73785 1.87817H3.56488C3.07208 1.87817 2.67279 1.47852 2.67279 0.98584C2.67279 0.493164 3.0722 0.0935059 3.56494 0.0932617H8.8739C8.96558 0.0930176 9.05664 0.107178 9.14392 0.135254H9.15094H9.15991C9.2879 0.178955 9.40399 0.251953 9.4989 0.348145C9.55841 0.407471 9.60919 0.474854 9.6499 0.54834V0.556152V0.563232C9.71594 0.690918 9.75024 0.832764 9.74988 0.976318V6.33032C9.74988 6.64648 9.58118 6.93872 9.30737 7.09668C9.03357 7.25488 8.69617 7.25488 8.42236 7.09668C8.14856 6.93872 7.97986 6.64648 7.97986 6.33032V3.13037L2.41187 8.74634C2.24658 8.91357 2.02136 9.00732 1.78638 9.00732C1.55139 9.00732 1.32617 8.91357 1.16089 8.74634L1.16986 8.7561Z" fill="#1AD598"/>
+</svg>`
+        },
+        {
+            id: 3,
+            title: 'Reach',
+            img: boostingImg3,
+            listing_name: 'Panorama Place',
+            views: '9712',
+            reach: '-2.07 %',
+            spent: '$18.99',
+            status: 'INACTIVE',
+            action: 'Boost +',
+            icon: `<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M3.56335 9.90698C3.07056 9.90698 2.67126 9.50732 2.67126 9.01465C2.67126 8.52197 3.07068 8.12231 3.56342 8.12207H6.73737L1.1684 2.50513C0.824097 2.15479 0.824097 1.59326 1.1684 1.24316C1.33368 1.07593 1.5589 0.982178 1.79388 0.982178C2.02887 0.982178 2.25409 1.07593 2.41937 1.24316L7.98737 6.85913V3.65918C7.98737 3.34302 8.15607 3.05078 8.42987 2.89282C8.70367 2.73462 9.04108 2.73462 9.31488 2.89282C9.58868 3.05078 9.75739 3.34302 9.75739 3.65918V9.01318C9.75757 9.28052 9.63794 9.53418 9.4314 9.7041L9.42542 9.70898L9.41644 9.71704L9.40442 9.72607L9.3894 9.73706L9.37341 9.74805L9.35638 9.75903L9.33936 9.77002L9.32336 9.78003L9.31036 9.78711H9.30237H9.2934L9.2804 9.79419C9.159 9.85498 9.02515 9.88648 8.8894 9.88648L3.56335 9.90698Z" fill="#EA3A3D"/>
+</svg>`
+        },
+        {
+            id: 4,
+            title: 'Spent',
+            img: boostingImg4,
+            listing_name: 'Panorama Place',
+            views: '3993',
+            reach: '+64.24 %',
+            spent: '$29.05',
+            status: 'INACTIVE',
+            action: 'Boost +',
+            icon: `<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1.1684 8.7561C0.824097 8.40576 0.824097 7.84424 1.1684 7.49414L6.73737 1.8772H3.56335C3.07367 1.87305 2.67896 1.4751 2.67889 0.985352C2.67889 0.495605 3.07367 0.0976562 3.56335 0.0932617H8.87238C8.96442 0.0932617 9.05585 0.107666 9.14337 0.13623H9.14935H9.16034C9.28796 0.180176 9.40363 0.253174 9.49835 0.349121C9.54358 0.394775 9.5838 0.445068 9.61835 0.499023L9.62634 0.511963L9.63232 0.521973V0.528076C9.7124 0.664795 9.75452 0.820312 9.75433 0.979004V6.33301C9.75433 6.64917 9.58563 6.94141 9.31183 7.09936C9.03802 7.25757 8.70062 7.25757 8.42682 7.09936C8.15302 6.94141 7.98431 6.64917 7.98431 6.33301V3.13306L2.41632 8.74902C2.25104 8.91626 2.02582 9.01001 1.79083 9.01001C1.55585 9.01001 1.33063 8.91626 1.16534 8.74902L1.1684 8.7561Z" fill="#1AD598"/>
+</svg>`
+        },
+        {
+            id: 5,
+            title: 'Status',
+            img: boostingImg5,
+            listing_name: 'Panorama Place',
+            views: '1972',
+            reach: '-23.10 %',
+            spent: '$99.95',
+            status: 'INACTIVE',
+            action: 'Boost +',
+            icon: `<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M3.56335 9.90698C3.07056 9.90698 2.67126 9.50732 2.67126 9.01465C2.67126 8.52197 3.07068 8.12231 3.56342 8.12207H6.73737L1.1684 2.50513C0.824097 2.15479 0.824097 1.59326 1.1684 1.24316C1.33368 1.07593 1.5589 0.982178 1.79388 0.982178C2.02887 0.982178 2.25409 1.07593 2.41937 1.24316L7.98737 6.85913V3.65918C7.98737 3.34302 8.15607 3.05078 8.42987 2.89282C8.70367 2.73462 9.04108 2.73462 9.31488 2.89282C9.58868 3.05078 9.75739 3.34302 9.75739 3.65918V9.01318C9.75757 9.28052 9.63794 9.53418 9.4314 9.7041L9.42542 9.70898L9.41644 9.71704L9.40442 9.72607L9.3894 9.73706L9.37341 9.74805L9.35638 9.75903L9.33936 9.77002L9.32336 9.78003L9.31036 9.78711H9.30237H9.2934L9.2804 9.79419C9.159 9.85498 9.02515 9.88648 8.8894 9.88648L3.56335 9.90698Z" fill="#EA3A3D"/>
+</svg>`
+        },
+        {
+            id: 6,
+            title: 'Action',
+            img: boostingImg6,
+            listing_name: 'Panorama Place',
+            views: '3449',
+            reach: '0.00 %',
+            spent: '$49.95',
+            status: 'INACTIVE',
+            action: 'Boost +',
+            icon: `<svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M6.95178 9.94604C6.60669 9.59741 6.60895 9.0354 6.95679 8.6897L9.21979 6.427L1.31079 6.46094C1.07568 6.4624 0.849792 6.36963 0.683533 6.20337C0.517273 6.03711 0.424438 5.81128 0.425781 5.57593C0.429504 5.08472 0.826538 4.68726 1.31781 4.68286L9.22681 4.64893L6.98383 2.40503C6.75836 2.17944 6.67035 1.85083 6.75287 1.54297C6.83539 1.23511 7.07593 0.994385 7.38385 0.911865C7.69183 0.829346 8.02039 0.91748 8.24579 1.14307L12.0008 4.8999C12.0662 4.96509 12.1209 5.04028 12.1628 5.12256V5.1228L12.1698 5.13672V5.14673V5.15283C12.2234 5.26929 12.2507 5.396 12.2498 5.52393C12.2496 5.60938 12.2372 5.69434 12.2128 5.77612V5.77588V5.79077V5.7998V5.80884L12.2068 5.82495C12.1622 5.94653 12.0916 6.05713 11.9999 6.14868L8.21387 9.93481C8.0462 10.103 7.81836 10.1973 7.58093 10.197C7.34613 10.2007 7.11963 10.1104 6.95178 9.94604Z" fill="#809FB8"/>
+</svg>`
+        },
+    ]
+
+    const [activeBoostingBtn, setActiveBoostingBtn] = useState('')
+
+    const boostingModalCards = [
+        {
+            id: 1,
+            title: 'Basic',
+            price: '$34',
+            features: [
+                'Enhanced Analytics',
+                'Custom Domain',
+                'E-commerce Integration',
+                'Priority Support',
+                'Advanced Security',
+            ],
+            icon: `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M28 16C28 22.6274 22.6274 28 16 28C9.37258 28 4 22.6274 4 16C4 9.37258 9.37258 4 16 4M22.6667 16C22.6667 19.6819 19.6819 22.6667 16 22.6667C12.3181 22.6667 9.33333 19.6819 9.33333 16C9.33333 12.3181 12.3181 9.33333 16 9.33333M19.6772 12.4688L24.9558 13.0232L27.8172 9.01723L24.3835 7.87266L23.239 4.43895L19.233 7.30038L19.6772 12.4688ZM19.6772 12.4688L16 15.9999" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+            tagText: '',
+        },
+        {
+            id: 2,
+            title: 'Business',
+            price: '$56',
+            features: [
+                'All Basic features',
+                'Property gets a "Featured Badge"',
+                'Highlighted listing',
+                'Priority placement in homepage',
+                'Wider Reach Audience',
+            ],
+            icon: `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.15078 12.0002H27.8507M9.39893 4.06753L16.0007 12.0003L22.6137 4.07309M27.5821 11.3723L22.984 4.47521C22.8683 4.30155 22.8104 4.21472 22.7339 4.15186C22.6662 4.09621 22.5882 4.05446 22.5043 4.02899C22.4096 4.00022 22.3052 4.00022 22.0965 4.00022H9.90491C9.6962 4.00022 9.59184 4.00022 9.49712 4.02899C9.41326 4.05446 9.33524 4.09621 9.26753 4.15186C9.19105 4.21472 9.13317 4.30155 9.01739 4.47521L4.41934 11.3723C4.26862 11.5984 4.19326 11.7114 4.16625 11.833C4.14239 11.9404 4.14549 12.0521 4.17527 12.158C4.20898 12.2779 4.2905 12.3866 4.45353 12.604L15.1474 26.8624C15.4369 27.2484 15.5816 27.4414 15.7591 27.5104C15.9145 27.5709 16.0869 27.5709 16.2424 27.5104C16.4198 27.4414 16.5646 27.2484 16.8541 26.8624L27.5479 12.604C27.7109 12.3866 27.7925 12.2779 27.8262 12.158C27.8559 12.0521 27.859 11.9404 27.8352 11.833C27.8082 11.7114 27.7328 11.5984 27.5821 11.3723Z" stroke="#1B223C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+            tagText: 'Best offer',
+        },
+        {
+            id: 3,
+            title: 'Pro',
+            price: '$34',
+            features: [
+                'All Premium features',
+                'Listing shown in homepage banner',
+                'Social media promotion (option)',
+                'Top priority in search section',
+                'Maximum visibility to potential buyers/renters',
+            ],
+            icon: `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M28 16C28 22.6274 22.6274 28 16 28C9.37258 28 4 22.6274 4 16C4 9.37258 9.37258 4 16 4M22.6667 16C22.6667 19.6819 19.6819 22.6667 16 22.6667C12.3181 22.6667 9.33333 19.6819 9.33333 16C9.33333 12.3181 12.3181 9.33333 16 9.33333M19.6772 12.4688L24.9558 13.0232L27.8172 9.01723L24.3835 7.87266L23.239 4.43895L19.233 7.30038L19.6772 12.4688ZM19.6772 12.4688L16 15.9999" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+            tagText: '',
+        },
+        {
+            id: 4,
+            title: 'Premium',
+            price: '$34',
+            features: [
+                'All Premium features',
+                'Listing shown in homepage banner',
+                'Social media promotion (option)',
+                'Top priority in search section',
+                'Maximum visibility to potential buyers/renters',
+            ],
+            icon: `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M28 16C28 22.6274 22.6274 28 16 28C9.37258 28 4 22.6274 4 16C4 9.37258 9.37258 4 16 4M22.6667 16C22.6667 19.6819 19.6819 22.6667 16 22.6667C12.3181 22.6667 9.33333 19.6819 9.33333 16C9.33333 12.3181 12.3181 9.33333 16 9.33333M19.6772 12.4688L24.9558 13.0232L27.8172 9.01723L24.3835 7.87266L23.239 4.43895L19.233 7.30038L19.6772 12.4688ZM19.6772 12.4688L16 15.9999" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+            tagText: '',
+        },
+    ]
+
+    const [modalShow, setModalShow] = useState(false);
+
+    const [imgFile, setImgFile] = useState(null);
+    const [ImgPreview, setImgPreview] = useState('');
+    const [uploadedImage, setUploadedImage] = useState('');
+    const [error, setError] = useState('');
+
+    const fileImgRef = useRef(null)
+
+    const handleUploadClick = () => {
+        fileImgRef.current.click()
+    }
+
+    const handleImgFileChange = (e) => {
+        const selectedImgFile = e.target.files[0];
+        if (!selectedImgFile) return;
+
+        if (!['image/jpeg', 'image/png', 'image/gif'].includes(selectedImgFile.type)) {
+            setError('Only JPEG, PNG, and GIF images are allowed.');
+            return;
+        }
+
+        setImgFile(selectedImgFile);
+        setImgPreview(URL.createObjectURL(selectedImgFile));
+        setError('');
+    };
+
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     if (!imgFile) {
+    //         setError('Please select a file to upload.');
+    //         return;
+    //     }
+
+    //     const formData = new FormData();
+    //     formData.append('image', imgFile);
+
+    //     try {
+    //         const response = await fetch('/api/upload', {
+    //             method: 'POST',
+    //             body: formData,
+    //         });
+
+    //         if (response.ok) {
+    //             const data = await response.json();
+    //             setUploadedImage(data.url);
+    //             setImgFile(null);
+    //             setImgPreview('');
+    //             console.log('File uploaded successfully');
+    //         } else {
+    //             setError('Error uploading file');
+    //         }
+    //     } catch (err) {
+    //         console.error(err);
+    //     }
+    // };
+
+    // const handleDelete = async () => {
+    //     if (!uploadedImage) return;
+
+    //     try {
+    //         const response = await fetch('/api/delete', {
+    //             method: 'POST',
+    //             headers: { 'Content-Type': 'application/json' },
+    //             body: JSON.stringify({ url: uploadedImage }),
+    //         });
+
+    //         if (response.ok) {
+    //             setUploadedImage('');
+    //             console.log('File deleted successfully');
+    //         } else {
+    //             setError('Error deleting file');
+    //         }
+    //     } catch (err) {
+    //         console.error(err);
+    //     }
+    // };
+
+    const handleDelete = () => {
+        setImgPreview('');
+        setImgFile('');
+    }
+
+    const profileFormFields = [
+        {
+            id: 1,
+            label: 'Full Name*',
+            placeholder: 'Alex Mike',
+            type: 'text'
+        },
+        {
+            id: 2,
+            label: 'Agency Name*',
+            placeholder: 'Alex Mike',
+            type: 'text'
+        },
+        {
+            id: 3,
+            label: 'Email*',
+            placeholder: 'abc@gmail.com',
+            type: 'email'
+        },
+        {
+            id: 4,
+            label: 'Phone Number*',
+            placeholder: '+1 232 1231 1233',
+            type: 'text'
+        },
+    ]
+
+    // agent licensce file attachments
+
+    const [selectedFiles2, setSelectedFiles2] = useState([]);
+    const fileInputRef2 = useRef(null);
+
+    const handleFileChange2 = (event) => {
+        const newFiles2 = Array.from(event.target.files);
+        setSelectedFiles2([...selectedFiles2, ...newFiles2]);
+    };
+
+    const handleButtonClick2 = () => {
+        fileInputRef2.current.click();
+    };
+
+    const handleRemoveFile2 = (index) => {
+        const updatedFiles2 = [...selectedFiles2];
+        updatedFiles2.splice(index, 1);
+        setSelectedFiles2(updatedFiles2);
+    };
+
     return (
         <section className={agent_dashboardStyles.container}>
             <Container fluid className='px-lg-4'>
@@ -1085,6 +1804,64 @@ const agent_dashboard = () => {
                                                 </div>
                                             </div>
                                         </Tab.Pane>
+                                        <Tab.Pane eventKey="My Properties">
+                                            <Row>
+                                                {listingsData.map((item, index) =>
+                                                    <Col key={index} lg={4} md={4} className='mb-3'>
+                                                        <Card className={agent_dashboardStyles.slidercard}>
+                                                            <Card.Body>
+                                                                <div className={`${agent_dashboardStyles.sliderimg_container} position-relative`}>
+                                                                    <Image
+                                                                        src={item.img}
+                                                                        width='100%'
+                                                                        height='100%'
+                                                                        alt="featured properties image"
+                                                                        className={`${agent_dashboardStyles.sliderimg} img-fluid`}
+                                                                    />
+                                                                    <div className='position-absolute start-0 bottom-0 translate-middle-y ps-3 z-1'>
+                                                                        <h4 className='text-white'>{item.price}</h4>
+                                                                    </div>
+                                                                </div>
+                                                                <Card.Title className='pt-3'>{item.title}</Card.Title>
+                                                                <Card.Text>
+                                                                    <span>
+                                                                        <svg className='me-2' width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M7.68156 0.350771C6.56156 0.414771 5.53223 0.734771 4.59356 1.31077C3.67623 1.86544 2.9509 2.60144 2.41756 3.51877C1.87356 4.45744 1.60156 5.47077 1.60156 6.55877C1.60156 7.26277 1.7109 7.92944 1.92956 8.55877C2.14823 9.1881 2.46556 9.75877 2.88156 10.2708L7.23356 15.9028C7.36156 16.0734 7.52156 16.1881 7.71356 16.2468C7.90556 16.3054 8.1029 16.3054 8.30556 16.2468C8.50823 16.1881 8.68423 16.0734 8.83356 15.9028L13.1856 10.2708C13.9749 9.27877 14.4016 8.1481 14.4656 6.87877C14.4976 5.98277 14.3376 5.11877 13.9856 4.28677C13.6549 3.48677 13.1722 2.7801 12.5376 2.16677C11.9029 1.55344 11.1749 1.0921 10.3536 0.782771C9.50023 0.452104 8.60956 0.308105 7.68156 0.350771ZM12.2896 6.75077C12.2896 7.52944 12.0976 8.24677 11.7136 8.90277C11.3296 9.55877 10.8096 10.0788 10.1536 10.4628C9.49756 10.8468 8.78023 11.0388 8.00156 11.0388C7.2229 11.0388 6.50556 10.8468 5.84956 10.4628C5.19356 10.0788 4.67356 9.55877 4.28956 8.90277C3.90556 8.24677 3.71356 7.52944 3.71356 6.75077C3.71356 5.9721 3.90556 5.25477 4.28956 4.59877C4.67356 3.94277 5.19356 3.42277 5.84956 3.03877C6.50556 2.65477 7.2229 2.46277 8.00156 2.46277C8.78023 2.46277 9.49756 2.65477 10.1536 3.03877C10.8096 3.42277 11.3296 3.94277 11.7136 4.59877C12.0976 5.25477 12.2896 5.9721 12.2896 6.75077Z" fill="#EC6325" />
+                                                                        </svg>
+                                                                        {item.address}
+                                                                    </span>
+                                                                </Card.Text>
+                                                                <div className='d-flex'>
+                                                                    {item.amenities.map((amenity, index) => <span className='d-flex align-items-center me-2' key={index}>
+                                                                        <Image
+                                                                            src={`data:image/svg+xml;utf8,${encodeURIComponent(amenity.icon)}`}
+                                                                            width={16}
+                                                                            height={16}
+                                                                            alt="amenities icon"
+                                                                            className='me-2'
+                                                                        />
+                                                                        {amenity.area}{amenity.beds}{amenity.baths}</span>)}
+                                                                </div>
+                                                                <div className='pt-3'>
+                                                                    <Button variant='primary' className={agent_dashboardStyles.edit_btn}>
+                                                                        <span className='me-2'>
+                                                                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                                <path fillRule="evenodd" clipRule="evenodd" d="M21.8309 6.27618C21.9259 6.42039 21.9682 6.59296 21.9507 6.76477C21.9332 6.93657 21.857 7.09708 21.7349 7.21918L12.5419 16.4112C12.4478 16.5052 12.3305 16.5725 12.2019 16.6062L8.37287 17.6062C8.2463 17.6392 8.1133 17.6385 7.98706 17.6042C7.86083 17.57 7.74576 17.5033 7.65326 17.4108C7.56077 17.3183 7.49408 17.2032 7.4598 17.077C7.42553 16.9508 7.42486 16.8177 7.45787 16.6912L8.45787 12.8632C8.48777 12.7485 8.54276 12.642 8.61887 12.5512L17.8459 3.33018C17.9865 3.18973 18.1771 3.11084 18.3759 3.11084C18.5746 3.11084 18.7652 3.18973 18.9059 3.33018L21.7349 6.15818C21.7698 6.19502 21.8019 6.23447 21.8309 6.27618ZM20.1439 6.68818L18.3759 4.92118L9.85787 13.4392L9.23287 15.8322L11.6259 15.2072L20.1439 6.68818Z" fill="white" />
+                                                                                <path d="M20.016 18.0202C20.2893 15.6841 20.3766 13.3301 20.277 10.9802C20.2747 10.9248 20.2838 10.8695 20.304 10.8179C20.3241 10.7662 20.3548 10.7194 20.394 10.6802L21.378 9.69618C21.4049 9.66914 21.439 9.65044 21.4763 9.64233C21.5135 9.63422 21.5524 9.63703 21.5881 9.65045C21.6238 9.66386 21.6548 9.6873 21.6775 9.71794C21.7002 9.74858 21.7136 9.78513 21.716 9.82318C21.9007 12.6144 21.8304 15.4167 21.506 18.1952C21.27 20.2172 19.646 21.8022 17.633 22.0272C14.1383 22.4139 10.6117 22.4139 7.11701 22.0272C5.10501 21.8022 3.48001 20.2172 3.24401 18.1952C2.83012 14.6506 2.83012 11.0698 3.24401 7.52518C3.48001 5.50318 5.10401 3.91818 7.11701 3.69318C9.76946 3.40023 12.4417 3.32898 15.106 3.48018C15.1441 3.48292 15.1807 3.49653 15.2113 3.5194C15.242 3.54226 15.2654 3.57343 15.2789 3.6092C15.2923 3.64498 15.2953 3.68387 15.2873 3.72126C15.2794 3.75865 15.2609 3.79298 15.234 3.82018L14.241 4.81218C14.2022 4.85103 14.1558 4.88147 14.1047 4.9016C14.0536 4.92172 13.9989 4.93112 13.944 4.92918C11.7208 4.85303 9.49493 4.93826 7.28401 5.18418C6.63795 5.25569 6.03486 5.54291 5.57217 5.99944C5.10947 6.45596 4.81419 7.05514 4.73401 7.70018C4.33287 11.1285 4.33287 14.5919 4.73401 18.0202C4.81419 18.6652 5.10947 19.2644 5.57217 19.7209C6.03486 20.1775 6.63795 20.4647 7.28401 20.5362C10.639 20.9112 14.111 20.9112 17.467 20.5362C18.1131 20.4647 18.7162 20.1775 19.1789 19.7209C19.6416 19.2644 19.9358 18.6652 20.016 18.0202Z" fill="white" />
+                                                                            </svg>
+                                                                        </span>
+                                                                        Edit
+                                                                    </Button>
+                                                                </div>
+                                                            </Card.Body>
+                                                        </Card>
+                                                    </Col>
+                                                )}
+                                            </Row>
+                                            <div className='d-flex justify-content-center mt-3'>
+                                                <Pagination id='properties-pagination'>{items}</Pagination>
+                                            </div>
+                                        </Tab.Pane>
                                         <Tab.Pane eventKey="Add New Property">
                                             <div className={agent_dashboardStyles.addlisting_container}>
                                                 <div className='mb-4'>
@@ -1387,6 +2164,204 @@ const agent_dashboard = () => {
                                                 </div>
                                                 <div>
                                                     <Button variant='danger' className={agent_dashboardStyles.submit_listing_btn}>Submit Property</Button>
+                                                </div>
+                                            </div>
+                                        </Tab.Pane>
+                                        <Tab.Pane eventKey='Boosting'>
+                                            <div className={agent_dashboardStyles.boosting_container}>
+                                                <div className='mb-4 d-flex justify-content-between align-items-center'>
+                                                    <h4 className={agent_dashboardStyles.boosting_title}>Listings</h4>
+                                                    <a href="#">
+                                                        <svg width="28" height="6" viewBox="0 0 28 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path fillRule="evenodd" clipRule="evenodd" d="M22 3C22 1.34326 23.3431 0 25 0C26.6569 0 28 1.34302 28 3C28 4.65674 26.6569 6 25 6C23.3431 6 22 4.65674 22 3ZM11 3C11 1.34326 12.3431 0 14 0C15.6569 0 17 1.34302 17 3C17 4.65674 15.6569 6 14 6C12.3431 6 11 4.65674 11 3ZM0 3C0 1.34326 1.34314 0 3 0C4.65686 0 6 1.34302 6 3C6 4.65674 4.65686 6 3 6C1.34314 6 0 4.65674 0 3Z" fill="#99B2C6" />
+                                                        </svg>
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    <Table responsive>
+                                                        <thead>
+                                                            <tr>
+                                                                {boostingData.map((item, index) =>
+                                                                    <th key={index} className={`${item.id === 1 ? 'text-start' : 'text-center'} ${agent_dashboardStyles.boosting_table_title}`}>{item.title}</th>
+                                                                )}
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {boostingData.map((item, index) =>
+                                                                <tr key={index} className='text-center'>
+                                                                    <td>
+                                                                        <div className='d-flex align-items-center'>
+                                                                            <Image src={item.img} alt='boosting-img' width='100%' height='100%' className='me-3' />
+                                                                            <span className={agent_dashboardStyles.boosting_listing_name}>{item.listing_name}</span>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td style={{ verticalAlign: 'middle' }}>
+                                                                        <span className={agent_dashboardStyles.views_bg}>
+                                                                            {item.views}
+                                                                        </span>
+                                                                    </td>
+                                                                    <td style={{ verticalAlign: 'middle' }}>
+                                                                        <div className='d-flex align-items-center'>
+                                                                            <div
+                                                                                className={
+                                                                                    item.id === 3 || item.id === 5 ? agent_dashboardStyles.boosting_icon_failure_container : item.id === 6 ? agent_dashboardStyles.boosting_icon_neutral_container : agent_dashboardStyles.boosting_icon_container
+                                                                                }
+                                                                            >
+                                                                                <Image
+                                                                                    src={`data:image/svg+xml;utf8,${encodeURIComponent(item.icon)}`}
+                                                                                    width={10}
+                                                                                    height={10}
+                                                                                    alt="boosting-icon"
+                                                                                />
+                                                                            </div>
+                                                                            <span
+                                                                                className={
+                                                                                    item.id === 3 || item.id === 5 ? agent_dashboardStyles.reach_failure_text : item.id === 6 ? agent_dashboardStyles.reach_neutral_text : agent_dashboardStyles.reach_success_text
+                                                                                }
+                                                                            >
+                                                                                {item.reach}
+                                                                            </span>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td style={{ verticalAlign: 'middle' }}>
+                                                                        <span className={agent_dashboardStyles.boosting_spent_text}>{item.spent}</span>
+                                                                    </td>
+                                                                    <td style={{ verticalAlign: 'middle' }}>
+                                                                        <span className={item.id === 2 ? agent_dashboardStyles.boosting_active_status_container : agent_dashboardStyles.boosting_status_container}>
+                                                                            {item.status}
+                                                                        </span>
+                                                                    </td>
+                                                                    <td style={{ verticalAlign: 'middle' }}>
+                                                                        <Button variant='light' onClick={() => { setActiveBoostingBtn(index); setModalShow(true) }} className={activeBoostingBtn === index ? agent_dashboardStyles.active_boosting_btn : agent_dashboardStyles.boosting_btn}>
+                                                                            {item.action}
+                                                                        </Button>
+                                                                    </td>
+                                                                </tr>
+                                                            )}
+                                                        </tbody>
+                                                    </Table>
+                                                </div>
+                                                <Modal aria-labelledby="contained-modal-title-vcenter"
+                                                    show={modalShow}
+                                                    onHide={() => setModalShow(false)}
+                                                    centered
+                                                    size="lg"
+                                                    id='boosting-modal'
+                                                >
+                                                    <Modal.Body className="grid-example">
+                                                        <Container>
+                                                            <Row>
+                                                                {boostingModalCards.map((item, index) =>
+                                                                    <Col lg={6} key={index} className='mb-4'>
+                                                                        <Card className={item.id === 2 ? agent_dashboardStyles.boosting_modal_card2 : agent_dashboardStyles.boosting_modal_card}>
+                                                                            <Card.Body className='p-0'>
+                                                                                <div className='d-flex align-items-center mb-3'>
+                                                                                    <div className={item.id === 2 ? agent_dashboardStyles.boosting_modal_icon_container2 : agent_dashboardStyles.boosting_modal_icon_container}>
+                                                                                        <Image
+                                                                                            src={`data:image/svg+xml;utf8,${encodeURIComponent(item.icon)}`}
+                                                                                            width={32}
+                                                                                            height={32}
+                                                                                            alt="modal-icon"
+                                                                                        />
+                                                                                    </div>
+                                                                                    <div className='d-flex align-items-center'>
+                                                                                        <h2 className={`${agent_dashboardStyles.boosting_modal_plan_title} me-2`}>{item.title}</h2>
+                                                                                        {item.id === 2 ? <span className={agent_dashboardStyles.boosting_modal_tag_container}>{item.tagText}</span> : ''}
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div className='border-bottom d-flex align-items-center'>
+                                                                                    <h2 className={`${agent_dashboardStyles.boosting_modal_price} me-2`}>{item.price}</h2>
+                                                                                    <span className={agent_dashboardStyles.boosting_modal_price_text}>per month</span>
+                                                                                </div>
+                                                                                <ul className='my-4 list-unstyled'>
+                                                                                    {item.features.map(item => <li className={`${agent_dashboardStyles.boosting_modal_list_item} py-2`} key={item}>{item}</li>)}
+                                                                                </ul>
+                                                                                <div>
+                                                                                    <Button variant='light' className={agent_dashboardStyles.boosting_modal_btn}>Get Started</Button>
+                                                                                </div>
+                                                                            </Card.Body>
+                                                                        </Card>
+                                                                    </Col>
+                                                                )}
+                                                            </Row>
+                                                        </Container>
+                                                    </Modal.Body>
+                                                </Modal>
+                                            </div>
+                                        </Tab.Pane>
+                                        <Tab.Pane eventKey='Profile'>
+                                            <div className={agent_dashboardStyles.addlisting_container}>
+                                                <div className='mb-4'>
+                                                    <input type="file" onChange={handleImgFileChange} ref={fileImgRef} style={{ display: 'none' }} />
+                                                    {!ImgPreview && <Image src={profileImg} width={68} height={68} alt='default' className='me-3 rounded-circle' />}
+                                                    {ImgPreview && (
+                                                        <Image
+                                                            src={ImgPreview}
+                                                            alt="Preview"
+                                                            width={68}
+                                                            height={68}
+                                                            className='me-3 rounded-circle'
+                                                        />
+                                                    )}
+                                                    <Button variant='primary' type="submit" onClick={handleUploadClick} className={agent_dashboardStyles.profile_upload_btn}>Upload new photo</Button>
+                                                    {error && <p style={{ color: 'red' }}>{error}</p>}
+                                                    <a href='#' className={agent_dashboardStyles.profile_delete_link} onClick={handleDelete}>Delete</a>
+                                                </div>
+                                                <Form>
+                                                    <Row>
+                                                        {profileFormFields.map((item, index) =>
+                                                            <Col key={index} lg={12}>
+                                                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                                                    <Form.Label className={agent_dashboardStyles.addlisting_label}>{item.label}</Form.Label>
+                                                                    <Form.Control type={item.type} placeholder={item.placeholder} className={agent_dashboardStyles.addlisting_input} />
+                                                                </Form.Group>
+                                                            </Col>
+                                                        )}
+                                                    </Row>
+                                                </Form>
+                                            </div>
+                                            <div className={agent_dashboardStyles.addlisting_container}>
+                                                <div className='mb-4'>
+                                                    <h4 className={agent_dashboardStyles.addlisting_title}>Agent License</h4>
+                                                </div>
+                                                <input
+                                                    type="file"
+                                                    ref={fileInputRef2}
+                                                    style={{ display: 'none' }}
+                                                    onChange={handleFileChange2}
+                                                    multiple
+                                                />
+                                                {selectedFiles2.length > 0 && (
+                                                    <div>
+                                                        <p className={agent_dashboardStyles.file_subtitle}>File Attachment*</p>
+                                                        <ul className='list-unstyled'>
+                                                            {selectedFiles2.map((file, index) => (
+                                                                <li key={index} className={`${agent_dashboardStyles.file_list_item} d-flex justify-content-between`}>
+                                                                    {file.name}{' '}
+                                                                    <CloseButton onClick={() => handleRemoveFile2(index)} />
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                )}
+                                                <div className='d-flex align-items-center'>
+                                                    <Button variant='dark' className={agent_dashboardStyles.option_add_btn} onClick={handleButtonClick2}>
+                                                        <span className='me-2'>
+                                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M6.17984 0.470024C6.3786 0.470024 6.54009 0.532135 6.66431 0.656358C6.78853 0.78058 6.85064 0.942068 6.85064 1.14082V5.38922H11.099C11.2978 5.38922 11.4593 5.45134 11.5835 5.57556C11.7077 5.69978 11.7698 5.86127 11.7698 6.06002C11.7698 6.25878 11.7077 6.42027 11.5835 6.54449C11.4593 6.66871 11.2978 6.73082 11.099 6.73082H6.85064V10.9792C6.85064 11.178 6.78853 11.3395 6.66431 11.4637C6.54009 11.5879 6.3786 11.65 6.17984 11.65C5.98109 11.65 5.8196 11.5879 5.69538 11.4637C5.57116 11.3395 5.50904 11.178 5.50904 10.9792V6.73082H1.26064C1.06189 6.73082 0.900399 6.66871 0.776177 6.54449C0.651955 6.42027 0.589844 6.25878 0.589844 6.06002C0.589844 5.86127 0.651955 5.69978 0.776177 5.57556C0.900399 5.45134 1.06189 5.38922 1.26064 5.38922H5.50904V1.14082C5.50904 0.942068 5.57116 0.78058 5.69538 0.656358C5.8196 0.532135 5.98109 0.470024 6.17984 0.470024Z" fill="white" />
+                                                            </svg>
+                                                        </span>
+                                                        Upload File
+                                                    </Button>
+                                                    <span className={`${agent_dashboardStyles.file_type_text} ms-3 pt-3`}>Upload file .img, .pdf, .Word</span>
+                                                </div>
+                                            </div>
+                                            <div className='d-flex align-items-center justify-content-end'>
+                                                <div className='me-4'>
+                                                    <a href="#" className={agent_dashboardStyles.cancel_link}>Cancel</a>
+                                                </div>
+                                                <div>
+                                                    <Button variant='primary' className={agent_dashboardStyles.profile_save_btn}>Save</Button>
                                                 </div>
                                             </div>
                                         </Tab.Pane>
