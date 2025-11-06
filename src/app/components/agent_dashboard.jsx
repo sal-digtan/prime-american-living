@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState, useContext } from 'react'
+import React, { useRef, useState, useContext, useEffect } from 'react'
 import agent_dashboardStyles from '@/app/components/agent_dashboard.module.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -29,6 +29,8 @@ import boostingImg6 from '../../../public/boosting-img6.png';
 import Table from 'react-bootstrap/Table';
 import Modal from 'react-bootstrap/Modal';
 import profileImg from '../../../public/profile-img.png';
+import { signOut, useSession } from "next-auth/react";
+import { useRouter } from 'next/navigation';
 
 const Chart = dynamic(() => import('../components/Chart'), {
     ssr: false,
@@ -1333,6 +1335,31 @@ const agent_dashboard = () => {
         setSelectedFiles2(updatedFiles2);
     };
 
+    const router = useRouter();
+
+    const handleLogout = async () => {
+        await signOut({ redirect: false });
+        // Perform some action after logout
+        router.push('/');
+    };
+
+    const { data: session, status } = useSession();
+
+    useEffect(() => {
+        if (status === "unauthenticated") {
+            router.push("/signin");
+        }
+    }, [status, router]);
+
+    if (status === "loading" || status === "unauthenticated") {
+        return null;
+    }
+
+    // if (session) {
+    //     // Render dashboard content
+    //     return <div>Welcome to the dashboard!</div>;
+    // }
+
     return (
         <section className={agent_dashboardStyles.container}>
             <Container fluid className='px-lg-4'>
@@ -1382,7 +1409,7 @@ const agent_dashboard = () => {
                                     </Nav>
                                     <Nav id='dash-nav' variant="pills" className="flex-column mb-5">
                                         <Nav.Item>
-                                            <Nav.Link eventKey='Logout'>
+                                            <Nav.Link eventKey='Logout' onClick={handleLogout}>
                                                 <span>
                                                     <svg className='me-2' width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <g clipPath="url(#clip0_109_664)">

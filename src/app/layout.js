@@ -1,6 +1,8 @@
 import { Jost } from "next/font/google";
 import "./globals.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AuthProvider from "@/app/context/AuthProvider";
+import { ResetPasswordTokenProvider } from '@/app/context/ResetPasswordTokenContext';
 
 const jost = Jost({
   variable: "--font-jost",
@@ -16,9 +18,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${jost.variable}`}>
-        {children}
-      </body>
+      <AuthProvider>
+        <ResetPasswordTokenProvider>
+          <body className={`${jost.variable}`}>
+            {children}
+          </body>
+        </ResetPasswordTokenProvider>
+      </AuthProvider>
     </html>
   );
 }

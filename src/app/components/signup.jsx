@@ -12,6 +12,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from 'next/link';
+import axios from 'axios';
 
 const signup = () => {
 
@@ -140,7 +141,7 @@ const signup = () => {
         },
         {
             id: 5,
-            name: 'confirm-password',
+            name: 'confirm_password',
             placeholder: 'Confirm Password',
             type: 'password'
         },
@@ -265,6 +266,96 @@ const signup = () => {
         return () => clearInterval(intervalRef.current);
     }, [startTimer, codeExpiry]);
 
+    const [signupFields, setSignupFields] = useState({
+        fname: '',
+        lname: '',
+        email: '',
+        password: '',
+        confirm_password: '',
+        userType: ''
+    })
+
+    const handleSignUp = async (e) => {
+        if (e && e.preventDefault) {
+            e.preventDefault();
+        }
+        try {
+            const response = await axios.post('/api/sign-up', {
+                fname: signupFields.fname,
+                lname: signupFields.lname,
+                email: signupFields.email,
+                password: signupFields.password,
+                confirm_password: signupFields.confirm_password,
+                userType: signupFields.userType,
+            });
+            // if (response.status === 201) {
+            //     // Redirect to dashboard based on user type
+            //     window.location.href = response.data.redirectUrl;
+            // }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const [verifyCode, setVerifyCode] = useState({
+        digit1: '',
+        digit2: '',
+        digit3: '',
+        digit4: '',
+        digit5: '',
+        digit6: '',
+    })
+
+    const inputRefs = [
+        useRef(null),
+        useRef(null),
+        useRef(null),
+        useRef(null),
+        useRef(null),
+        useRef(null),
+    ];
+
+    const handleInputChange = (e, index) => {
+        const { value } = e.target;
+        if (value.length > 1) return;
+
+        setVerifyCode((prevCode) => {
+            const newCode = { ...prevCode };
+            newCode[`digit${index + 1}`] = value;
+            return newCode;
+        });
+
+        if (value && index < 5) {
+            inputRefs[index + 1].current.focus();
+        }
+    };
+
+
+    const handleVerifyCode = async (e) => {
+        if (e && e.preventDefault) {
+            e.preventDefault();
+        }
+        try {
+            const verificationCode = `${verifyCode.digit1}${verifyCode.digit2}${verifyCode.digit3}${verifyCode.digit4}${verifyCode.digit5}${verifyCode.digit6}`;
+            console.log('Verification Code:', verificationCode);
+
+            if (!verificationCode || verificationCode.length !== 6) {
+                alert('Please enter a valid 6-digit verification code');
+                return;
+            }
+
+            const response = await axios.put('/api/verify-code', {
+                email: signupFields.email,
+                verificationCode,
+            });
+
+            if (response.status === 200) {
+                alert('Code verified successfully');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     return (
         <section className={signupStyles.container}>
@@ -298,7 +389,9 @@ const signup = () => {
                                                         </div>
                                                     </div>
                                                 }
-                                                name='group' id={item.id} value={item.title} className={signupStyles.form_check} />
+                                                name='group' id={item.id} value={item.title} className={signupStyles.form_check}
+                                                onChange={(e) => setSignupFields({ ...signupFields, userType: e.target.value })}
+                                            />
                                         </div>
                                     )}
                                 </div>
@@ -319,13 +412,13 @@ const signup = () => {
                                             item.id === 3 ?
                                                 <Col lg={12} key={index}>
                                                     <Form.Group className="mb-3" controlId={item.name}>
-                                                        <Form.Control type={item.type} placeholder={item.placeholder} className={`${signupStyles.email_input} border-0 border-bottom`} />
+                                                        <Form.Control type={item.type} placeholder={item.placeholder} className={`${signupStyles.email_input} border-0 border-bottom`} name={item.name} value={item.name === 'fname' ? signupFields.fname : item.name === 'lname' ? signupFields.lname : item.name === 'email' ? signupFields.email : item.name === 'password' ? signupFields.password : item.name === 'confirm_password' ? signupFields.confirm_password : ''} onChange={(e) => setSignupFields(item.name === 'fname' ? { ...signupFields, fname: e.target.value } : item.name === 'lname' ? { ...signupFields, lname: e.target.value } : item.name === 'email' ? { ...signupFields, email: e.target.value } : item.name === 'password' ? { ...signupFields, password: e.target.value } : item.name === 'confirm_password' ? { ...signupFields, confirm_password: e.target.value } : '')} />
                                                     </Form.Group>
                                                 </Col>
                                                 :
                                                 <Col lg={6} key={index}>
                                                     <Form.Group className="mb-3" controlId={item.name}>
-                                                        <Form.Control type={item.type} placeholder={item.placeholder} className={`${item.id === 4 || item.id === 5 ? signupStyles.password_input : signupStyles.form_input} border-0 border-bottom`} />
+                                                        <Form.Control type={item.type} placeholder={item.placeholder} className={`${item.id === 4 || item.id === 5 ? signupStyles.password_input : signupStyles.form_input} border-0 border-bottom`} name={item.name} value={item.name === 'fname' ? signupFields.fname : item.name === 'lname' ? signupFields.lname : item.name === 'email' ? signupFields.email : item.name === 'password' ? signupFields.password : item.name === 'confirm_password' ? signupFields.confirm_password : ''} onChange={(e) => setSignupFields(item.name === 'fname' ? { ...signupFields, fname: e.target.value } : item.name === 'lname' ? { ...signupFields, lname: e.target.value } : item.name === 'email' ? { ...signupFields, email: e.target.value } : item.name === 'password' ? { ...signupFields, password: e.target.value } : item.name === 'confirm_password' ? { ...signupFields, confirm_password: e.target.value } : '')} />
                                                     </Form.Group>
                                                 </Col>
                                         )}
@@ -384,7 +477,7 @@ const signup = () => {
                                     </Row>
                                 </Form>
                                 <div className='py-4'>
-                                    <Button variant='primary' onClick={() => { setShowInfoFields(false); setShowVerfication(true); setStartTimer(true) }} className={signupStyles.form_btn}>Sign Up</Button>
+                                    <Button variant='primary' onClick={() => { setShowInfoFields(false); setShowVerfication(true); setStartTimer(true); handleSignUp() }} className={signupStyles.form_btn}>Sign Up</Button>
                                 </div>
                             </div>
                         }
@@ -398,7 +491,10 @@ const signup = () => {
                                     <Row>
                                         {codeFields.map((item, index) =>
                                             <Col lg={2} md={2} xs={2} key={index}>
-                                                <Form.Control type={item.type} className={signupStyles.code_input} />
+                                                <Form.Control type={item.type} className={signupStyles.code_input} value={verifyCode[`digit${index + 1}`]}
+                                                    ref={inputRefs[index]}
+                                                    onChange={(e) => handleInputChange(e, index)}
+                                                    maxLength={1} />
                                             </Col>
                                         )}
                                     </Row>
@@ -409,7 +505,7 @@ const signup = () => {
                                     </p>
                                 </div>
                                 <div className='pb-4'>
-                                    <Button variant='primary' onClick={() => { setShowVerfication(false); setShowSuccess(true) }} className={signupStyles.form_btn}>Verify</Button>
+                                    <Button variant='primary' onClick={() => { setShowVerfication(false); setShowSuccess(true); handleVerifyCode() }} className={signupStyles.form_btn}>Verify</Button>
                                 </div>
                                 <div className='text-center'>
                                     <span className={signupStyles.resend_text}>If you didn’t receive a code!
