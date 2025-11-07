@@ -36,7 +36,7 @@ const Chart = dynamic(() => import('../components/Chart'), {
     ssr: false,
 });
 
-const CustomEditor = dynamic(() => import('../components/custom-editor'), {
+const CustomEditor = dynamic(() => import('./CustomEditor'), {
     ssr: false
 });
 

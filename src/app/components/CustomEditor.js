@@ -16,7 +16,7 @@ const initialValue = [
     },
 ]
 
-const custom_editor = () => {
+const CustomEditor = () => {
 
     // Create a Slate editor object that won't change across renders.
     const [editor] = useState(() => withReact(createEditor()))
@@ -103,4 +103,4 @@ const Leaf = props => {
     )
 }
 
-export default custom_editor
+export default CustomEditor
