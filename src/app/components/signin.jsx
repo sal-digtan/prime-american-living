@@ -152,7 +152,7 @@ const signin = () => {
 
     return (
         <section className={signinStyles.container}>
-            {session !== null ? <div>You are already sigined in!</div> :
+            {session !== null && status === 'authenticated' ? <div>You are already sigined in!</div> :
                 <Container fluid className='ps-lg-4'>
                     <Row>
                         <Col lg={6}>
