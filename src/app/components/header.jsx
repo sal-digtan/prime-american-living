@@ -65,7 +65,9 @@ const header = () => {
                             )}
                         </Nav>
                         <Nav>
-                            <Button variant="danger" className={headerStyles.headerbtn}>Login/Register</Button>
+                            <Link href='/signin'>
+                                <Button variant="danger" className={headerStyles.headerbtn}>Login/Register</Button>
+                            </Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
